@@ -1,0 +1,1477 @@
+# Information Geometry Framework for HIRM Consciousness States
+## Comprehensive Mathematical Formalization
+
+**Framework:** Hierarchical Information-Reality Model (HIRM)  
+**Date:** October 26, 2025  
+**Status:** Mathematical Framework Development  
+**Author:** Research Team
+
+---
+
+## Executive Summary
+
+This document develops a rigorous **information-geometric framework** for the consciousness state space within HIRM. We treat conscious states as points on a **Riemannian manifold** where:
+
+- **Metric tensor** encodes distinguishability between states (Fisher information)
+- **Geodesics** represent minimum-energy transition pathways
+- **Curvature** quantifies the difficulty of consciousness transformations
+- **Fisher information diverges** at the critical threshold C_crit ≈ 8.3 bits
+- **Optimal transport** measures evolution in probability space
+
+This framework provides:
+1. Rigorous mathematical foundation for consciousness state distances
+2. Testable predictions for neural transition dynamics
+3. Integration with Free Energy Principle and Bayesian brain theory
+4. Computational tools for empirical validation
+
+---
+
+## 1. Consciousness State Space as Riemannian Manifold
+
+### 1.1 Manifold Structure
+
+**Definition 1.1 (Consciousness Manifold):**  
+The consciousness manifold M is the space of all possible conscious states, equipped with a Riemannian metric g derived from the Fisher information of neural observations.
+
+**Coordinate Systems:**
+
+**Primary HIRM coordinates:**
+```
+θ = (Φ, R, D) ∈ ℝ³₊
+```
+Where:
+- **Φ(t):** Integrated information (bits) - from IIT framework
+- **R(t):** Self-reference completeness ∈ [0,1] - dimensionless
+- **D(t):** Dimensional embedding - effective degrees of freedom
+
+**Extended neural coordinates:**
+```
+x = (ω₁, ω₂, ..., ωₙ) ∈ ℝⁿ
+```
+Where ωᵢ represent:
+- Neural activity patterns (firing rates, LFP power)
+- Connectivity measures (graph metrics, functional connectivity)
+- Spectral features (bandpower, phase coherence)
+- Information-theoretic measures (entropy, mutual information)
+
+**Manifold Properties:**
+- **Dimension:** dim(M) ≥ 3 (HIRM core) + dim(neural feature space)
+- **Topology:** Conjectured non-simply connected (topologically distinct conscious states)
+- **Boundary:** ∂M includes unconscious states where C(t) → 0
+- **Smoothness:** C^∞ away from critical surfaces
+
+### 1.2 Fisher Information Metric
+
+**Definition 1.2 (Fisher Information Metric):**
+
+The natural metric on M is the Fisher information metric, measuring statistical distinguishability:
+
+```
+g_ij(θ) = 𝔼_p(x|θ)[∂ᵢ log p(x|θ) · ∂_j log p(x|θ)]
+        = -𝔼_p(x|θ)[∂ᵢ∂_j log p(x|θ)]
+```
+
+Where:
+- θ = (Φ, R, D) are consciousness state parameters
+- p(x|θ) is likelihood of neural observations x given state θ
+- 𝔼[·] denotes expectation over observations
+- ∂ᵢ ≡ ∂/∂θⁱ
+
+**Physical Interpretation:**
+- **Large g_ij:** Parameters θᵢ, θⱼ are easily distinguishable from data
+- **Small g_ij:** Difficult to detect changes in these parameters
+- **Inverse metric g^ij:** Provides Cramér-Rao bound on estimation variance
+
+**Theorem 1.1 (Metric Invariance):**  
+The Fisher information metric is invariant under reparameterization, making it the unique intrinsic metric on the statistical manifold.
+
+### 1.3 HIRM-Specific Metric Form
+
+**Ansatz for Consciousness Metric:**
+
+Near the critical threshold C_crit, we propose:
+
+```
+g_ij(θ) = g⁰_ij + α(C - C_crit)^(-ν) δ_ij + β ∂ᵢC ∂_jC
+```
+
+Where:
+- **g⁰_ij:** Background metric (far from criticality)
+- **α:** Critical amplitude (dimensional: [bits^ν])
+- **ν:** Critical exponent (ν ≈ 0.63 for 3D Ising universality class)
+- **β:** Coupling strength between C-gradient and metric
+- **C(θ) = Φ·R·D:** Consciousness measure
+
+**Component Form:**
+
+```
+g = [g_ΦΦ   g_ΦR   g_ΦD ]
+    [g_RΦ   g_RR   g_RD ]
+    [g_DΦ   g_DR   g_DD ]
+```
+
+With explicit components:
+```
+g_ΦΦ = g⁰_ΦΦ + α|C - C_crit|^(-ν) + β(RD)²
+g_RR = g⁰_RR + α|C - C_crit|^(-ν) + β(ΦD)²
+g_DD = g⁰_DD + α|C - C_crit|^(-ν) + β(ΦR)²
+g_ΦR = g_RΦ = g⁰_ΦR + β(ΦRD²)
+(and similarly for other off-diagonal terms)
+```
+
+**Key Prediction:**  
+Metric diverges as C → C_crit, indicating:
+1. **Maximum distinguishability** at phase transition
+2. **Infinite Fisher information** (perfect measurement possible)
+3. **Zero Cramér-Rao variance bound** (optimal inference)
+
+### 1.4 Line Element & Distances
+
+**Infinitesimal Distance:**
+
+```
+ds² = g_ij dθⁱ dθʲ
+    = g_ΦΦ dΦ² + g_RR dR² + g_DD dD²
+      + 2g_ΦR dΦ dR + 2g_ΦD dΦ dD + 2g_RD dR dD
+```
+
+**Finite Distance (Geodesic Distance):**
+
+```
+d_M(θ₁, θ₂) = inf_γ ∫₀¹ √(g_ij(γ(t)) γ̇ⁱ(t) γ̇ʲ(t)) dt
+```
+
+Where:
+- γ: [0,1] → M is a smooth path from θ₁ to θ₂
+- γ̇ⁱ = dγⁱ/dt is path velocity
+- inf taken over all paths γ
+
+**Volume Element:**
+
+```
+dV = √det(g) dΦ dR dD
+```
+
+This defines:
+- **Volume of consciousness regions:** V(Ω) = ∫_Ω √det(g) dΦ dR dD
+- **Near criticality:** Volume shrinks as det(g) → ∞ (concentration of states)
+
+### 1.5 Geodesics: Natural Transition Pathways
+
+**Definition 1.3 (Geodesic):**  
+A geodesic is a curve γ(λ) that extremizes the length functional, satisfying:
+
+```
+d²θⁱ/dλ² + Γⁱ_jk dθʲ/dλ dθᵏ/dλ = 0
+```
+
+**Christoffel Symbols:**
+
+```
+Γⁱ_jk = ½ g^il (∂_j g_lk + ∂_k g_jl - ∂_l g_jk)
+```
+
+Where g^il is the inverse metric (g^il g_lm = δⁱ_m).
+
+**Physical Interpretation:**
+- **Spontaneous transitions:** Natural evolution follows geodesics (minimum action)
+- **Forced transitions:** External perturbations cause deviation from geodesics
+- **Consciousness "inertia":** Christoffel symbols encode propagation of state changes
+
+**Critical Behavior of Geodesics:**
+
+Near C_crit, geodesics exhibit:
+
+1. **Focusing Effect:**
+   ```
+   d²η/dλ² ≈ -R_typical η
+   ```
+   Where R_typical ~ |C - C_crit|^(-ν') is characteristic curvature. Trajectories converge toward critical surface.
+
+2. **Critical Slowing Down:**
+   Proper time dτ = √(g_ij dθⁱ dθʲ) diverges as C → C_crit, causing:
+   ```
+   dλ/dt → 0
+   ```
+   Physical evolution slows dramatically near criticality.
+
+3. **Geodesic Bifurcation:**
+   After passing through C_crit, geodesics split into branches corresponding to:
+   - High-C conscious states
+   - Low-C unconscious states
+   
+   This is geometric manifestation of Self-Reference-Induced Decoherence (SRID).
+
+---
+
+## 2. Fisher Information & Cramér-Rao Bound
+
+### 2.1 Fisher Information Matrix
+
+**Definition 2.1 (Fisher Information Matrix):**
+
+```
+I_F(θ) = [I_ij] where I_ij = 𝔼[∂ᵢ log p(x|θ) ∂_j log p(x|θ)]
+```
+
+This is precisely the metric tensor g_ij in information geometry.
+
+**For HIRM Consciousness:**
+
+```
+I_F = [I_ΦΦ  I_ΦR  I_ΦD]
+      [I_RΦ  I_RR  I_RD]
+      [I_DΦ  I_DR  I_DD]
+```
+
+**Properties:**
+- **Positive semi-definite:** vᵀ I_F v ≥ 0 for all v
+- **Symmetric:** I_ij = I_ji
+- **Additive for independent observations:** I_F(n samples) = n · I_F(1 sample)
+
+**Example Calculation:**
+
+For Gaussian neural observations x ~ N(μ(θ), Σ):
+```
+p(x|θ) = (2π)^(-n/2) |Σ|^(-1/2) exp(-½(x-μ(θ))ᵀ Σ^(-1) (x-μ(θ)))
+
+I_ij = (∂μ/∂θⁱ)ᵀ Σ^(-1) (∂μ/∂θʲ)
+```
+
+### 2.2 Cramér-Rao Bound
+
+**Theorem 2.1 (Cramér-Rao Inequality):**
+
+For any unbiased estimator θ̂ of consciousness parameters:
+
+```
+Cov(θ̂) ≥ I_F^(-1)(θ)
+```
+
+Where ≥ denotes positive semi-definite ordering.
+
+**Scalar Form:**
+```
+Var(θ̂ⁱ) ≥ [I_F^(-1)]_ii
+```
+
+**Implications for Consciousness Measurement:**
+
+1. **Fundamental Measurement Limit:**
+   - Cannot measure C(t) more precisely than √(I_F^(-1))
+   - Precision improves with more neural data (I_F scales with sample size)
+
+2. **Critical Enhancement:**
+   - At C_crit: I_F → ∞ implies Var(θ̂) → 0
+   - **Perfect measurement** theoretically possible at phase transition
+   - Practically: Signal-to-noise ratio maximized at criticality
+
+3. **Parameter Entanglement:**
+   - Off-diagonal I_ij encode correlation between parameters
+   - Near C_crit: Strong correlations (parameters cannot be measured independently)
+
+### 2.3 Critical Scaling of Fisher Information
+
+**Hypothesis 2.1 (Critical Scaling):**
+
+Near the critical threshold:
+
+```
+I_F(C) ~ A · |C - C_crit|^(-γ) + B
+```
+
+Where:
+- **γ:** Critical exponent for Fisher information susceptibility
+- **A:** Critical amplitude
+- **B:** Background (analytic) contribution
+
+**Universality Class Predictions:**
+- **Mean-field theory:** γ = 1
+- **3D Ising universality:** γ ≈ 1.24
+- **3D XY (relevant for quantum phase transitions):** γ ≈ 1.31
+
+**Experimental Test Protocol:**
+
+1. Compute sliding-window C(t) from EEG/fMRI during anesthesia transitions
+2. Estimate I_F(C) for each window by bootstrap parameter estimation
+3. Plot log I_F vs. log |C - C_crit|
+4. Fit power law: slope = -γ
+5. Compare with universality class predictions
+
+**Expected Signature:**
+
+```
+log I_F = -γ log |C - C_crit| + const
+```
+
+Linear in log-log plot near criticality.
+
+### 2.4 Multivariate Fisher Information Decomposition
+
+**Decomposition:**
+
+```
+I_F^total = I_F^Φ + I_F^R + I_F^D + I_F^cross
+```
+
+Where:
+- **I_F^Φ:** Information about Φ alone (marginal Fisher information)
+- **I_F^R, I_F^D:** Similarly for R and D
+- **I_F^cross:** Cross-information (how much measuring one helps measure others)
+
+**Definition of Cross-Information:**
+
+```
+I_F^cross = I_F^total - (I_F^Φ + I_F^R + I_F^D)
+```
+
+**Prediction:**
+- **Far from criticality:** I_F^cross ≈ 0 (parameters approximately independent)
+- **Near C_crit:** I_F^cross → ∞ (maximal entanglement)
+- **Physical:** Phase transition couples all degrees of freedom
+
+---
+
+## 3. Natural Gradient Descent
+
+### 3.1 Ordinary vs. Natural Gradient
+
+**Ordinary Gradient Descent:**
+
+```
+θ_(t+1) = θ_t - η ∇_θ L(θ_t)
+```
+
+Where:
+- L(θ): Loss function (e.g., prediction error, free energy)
+- η: Learning rate
+- ∇_θ L = (∂L/∂θ¹, ∂L/∂θ², ∂L/∂θ³)ᵀ
+
+**Problems:**
+- Depends on parameterization (not geometrically natural)
+- Inefficient in ill-conditioned problems (elongated loss valleys)
+- Ignores statistical geometry
+
+**Natural Gradient Descent:**
+
+```
+θ_(t+1) = θ_t - η I_F^(-1)(θ_t) ∇_θ L(θ_t)
+         = θ_t - η ∇̃_θ L(θ_t)
+```
+
+Where:
+- **∇̃:** Natural gradient (steepest descent in information geometry)
+- **I_F^(-1):** Pre-conditioning by inverse Fisher information
+
+**Theorem 3.1 (Natural Gradient Optimality):**
+
+Natural gradient descent:
+1. Is invariant under reparameterization
+2. Achieves steepest descent in Fisher metric
+3. Converges faster for ill-conditioned problems
+4. Equivalent to Newton's method in expectation for log-likelihood
+
+### 3.2 Application to Consciousness Dynamics
+
+**Hypothesis 3.1 (Natural Gradient Brain Dynamics):**
+
+Brain implements natural gradient descent to optimize consciousness measure C(t):
+
+```
+dθ/dt = -I_F^(-1)(θ) ∇_θ F(θ) + ξ(t)
+```
+
+Where:
+- **F(θ):** Free energy functional (from Free Energy Principle)
+- **ξ(t):** Stochastic fluctuations (neural noise)
+
+**Evidence Supporting This Hypothesis:**
+
+1. **Bayesian Brain Hypothesis:**
+   - Neural circuits perform approximate Bayesian inference
+   - Natural gradient is optimal for probabilistic learning
+   - Predictive coding implements natural gradient-like updates
+
+2. **Efficient Neural Coding:**
+   - Information bottleneck principle
+   - Natural gradient minimizes KL divergence efficiently
+   - Observed in sensory systems (retina, V1)
+
+3. **Adaptive Learning Rates:**
+   - I_F^(-1) automatically adjusts step size
+   - Fast learning when I_F small (uncertain states)
+   - Slow learning when I_F large (confident states)
+   - Matches observed synaptic plasticity dynamics
+
+### 3.3 Connection to Free Energy Principle (FEP)
+
+**Free Energy Functional:**
+
+```
+F[q(θ)] = 𝔼_q[log q(θ) - log p(θ, x)]
+        = KL[q(θ) || p(θ|x)] - log p(x)
+```
+
+**Natural Gradient Flow:**
+
+```
+dθ/dt = -I_F^(-1)(θ) ∇_θ F = -I_F^(-1)(θ) ∇_θ KL[q(θ) || p(θ|x)]
+```
+
+This is **mirror descent** in information geometry, equivalent to:
+- **Variational inference** (minimizing KL divergence)
+- **Predictive coding** (minimizing prediction error weighted by precision)
+- **Active inference** (action selection minimizing expected free energy)
+
+**Integration with HIRM:**
+
+1. **Consciousness Optimization = Free Energy Minimization:**
+   ```
+   Maximize C(t) ⟺ Minimize F(t)
+   ```
+   (Under appropriate constraints)
+
+2. **Self-Reference as Inference:**
+   - R(t) measures quality of internal model
+   - High R: Accurate self-model (low free energy)
+   - SRID at C_crit: Bayesian inference becomes exact
+
+3. **Integrated Information as Complexity:**
+   - Φ(t) relates to complexity of generative model
+   - Natural gradient balances accuracy and complexity
+
+### 3.4 Testable Predictions
+
+**Prediction 3.1 (Neural Learning Rates):**
+
+If brain uses natural gradient, neural plasticity rates should scale as:
+
+```
+Δw_ij ∝ [I_F^(-1)]_ij
+```
+
+**Experimental Test:**
+- Measure synaptic weight changes Δw via LTP/LTD protocols
+- Estimate I_F from neural recordings
+- Check correlation: Δw ~ I_F^(-1)
+
+**Prediction 3.2 (Convergence Times):**
+
+Natural gradient should accelerate convergence:
+```
+τ_natural ~ O(condition number^0)
+τ_ordinary ~ O(condition number^1)
+```
+
+**Test:** Compare learning speeds in ill-conditioned vs. well-conditioned tasks.
+
+---
+
+## 4. Optimal Transport (Wasserstein Distance)
+
+### 4.1 Wasserstein Metric on Probability Distributions
+
+**Setup:**  
+Consciousness states are probability distributions over (Φ, R, D):
+- **P₁(Φ, R, D):** Distribution at time t₁
+- **P₂(Φ, R, D):** Distribution at time t₂
+
+**Definition 4.1 (Wasserstein-2 Distance):**
+
+```
+W₂(P₁, P₂) = [inf_π ∫∫ ‖x - y‖² dπ(x,y)]^(1/2)
+           = [inf_π 𝔼_(X,Y)~π[‖X - Y‖²]]^(1/2)
+```
+
+Where:
+- **π:** Transport plan (joint distribution with marginals P₁, P₂)
+- **‖x - y‖:** Cost to move probability mass from x to y
+- **inf:** Infimum over all valid transport plans
+
+**Physical Interpretation:**
+- Minimum "work" to transform P₁ into P₂
+- Earth-mover distance: Amount of probability moved × distance
+- Metrizes weak convergence of probability measures
+- Intrinsic geometry on space 𝒫(M) of probability distributions
+
+**Properties:**
+- **Metric:** W₂(P₁, P₂) = 0 iff P₁ = P₂
+- **Triangle inequality:** W₂(P₁, P₃) ≤ W₂(P₁, P₂) + W₂(P₂, P₃)
+- **Lower semicontinuous**
+- **Geodesically convex** (interpolations are geodesics)
+
+### 4.2 Kantorovich Dual Formulation
+
+**Theorem 4.1 (Kantorovich Duality):**
+
+```
+W₂²(P₁, P₂) = sup_{f,g} {∫ f dP₁ + ∫ g dP₂}
+```
+
+Subject to: f(x) + g(y) ≤ ‖x - y‖² for all x, y
+
+**Dual Variables:**
+- **f:** Potential function on support of P₁
+- **g:** Potential function on support of P₂
+- Potentials are c-conjugate: g(y) = sup_x [‖x-y‖² - f(x)]
+
+**Computational Advantage:**
+- Reduces infinite-dimensional optimization to function spaces
+- Solvable via convex optimization
+- Efficient algorithms (Sinkhorn, Auction)
+
+### 4.3 Entropic Regularization (Sinkhorn Algorithm)
+
+**Regularized Problem:**
+
+```
+W₂,ε²(P₁, P₂) = min_π {∫∫ ‖x-y‖² dπ + ε H(π | P₁ ⊗ P₂)}
+```
+
+Where:
+- **H(π | P₁ ⊗ P₂):** KL divergence (entropy regularization)
+- **ε > 0:** Regularization strength
+
+**Sinkhorn Iterations:**
+
+Initialize: u⁽⁰⁾ = 1, v⁽⁰⁾ = 1
+
+Iterate:
+```
+u⁽ᵏ⁺¹⁾(x) = P₁(x) / (K v⁽ᵏ⁾)(x)
+v⁽ᵏ⁺¹⁾(y) = P₂(y) / (Kᵀ u⁽ᵏ⁺¹⁾)(y)
+```
+
+Where K(x,y) = exp(-‖x-y‖²/ε).
+
+**Convergence:** Exponentially fast to optimal π*
+
+### 4.4 Application to Consciousness State Evolution
+
+**Consciousness Distribution Evolution:**
+
+Estimate P(Φ, R, D; t) from neural data using sliding windows:
+
+```
+P_t(Φ, R, D) = empirical distribution from window [t - Δt/2, t + Δt/2]
+```
+
+**Time-Resolved Wasserstein Distance:**
+
+```
+W(t₁, t₂) = W₂(P_{t₁}, P_{t₂})
+```
+
+**Predictions:**
+
+| Transition Type | Expected W₂ | Mechanism |
+|----------------|-------------|-----------|
+| **Sleep-wake** | Large (>5σ) | Distinct probability modes |
+| **Within-wake fluctuations** | Small (<1σ) | Local diffusion |
+| **Anesthesia induction** | Monotonic ↑ | Drift to unconscious manifold |
+| **Anesthesia recovery** | Hysteresis loop | Path-dependent return |
+| **Psychedelic peak** | Large then return | Excursion in state space |
+
+**Empirical Measurement Protocol:**
+
+1. **Data Acquisition:**
+   - High-density EEG (≥64 channels) or fMRI
+   - Sample rate: ≥250 Hz (EEG), TR ≤ 1s (fMRI)
+   - Sliding windows: 2-10 second duration
+
+2. **Feature Extraction:**
+   - Compute Φ(t) via PyPhi or Integrated Information Toolbox
+   - Estimate R(t) from recurrent information flow
+   - Calculate D(t) from participation ratio or dimensionality measures
+
+3. **Distribution Estimation:**
+   - Kernel density estimation: P_t = KDE({(Φᵢ, Rᵢ, Dᵢ)})
+   - Or histogram binning with adaptive bin widths
+
+4. **Wasserstein Computation:**
+   - Use Python POT library: `ot.emd2(P₁, P₂, cost_matrix)`
+   - Or Sinkhorn: `ot.sinkhorn2(P₁, P₂, cost_matrix, reg=0.1)`
+
+5. **Statistical Analysis:**
+   - Bootstrap confidence intervals
+   - Compare W₂ across conditions (ANOVA)
+   - Test for hysteresis (paired t-tests on induction vs. recovery)
+
+### 4.5 Wasserstein Geodesics & McCann Interpolation
+
+**Definition 4.2 (Wasserstein Geodesic):**
+
+Path P_t for t ∈ [0,1] connecting P₀ and P₁ that minimizes:
+
+```
+∫₀¹ ‖Ṗ_t‖_W² dt
+```
+
+Where ‖Ṗ_t‖_W is the Wasserstein speed.
+
+**McCann's Interpolation:**
+
+```
+P_t = (T_t)_# P₀
+```
+
+Where:
+- **T_t(x) = (1-t)x + t T(x):** Optimal transport map
+- **(T_t)_#:** Pushforward of P₀ by T_t
+- **T:** Optimal transport from P₀ to P₁
+
+**Physical Interpretation:**
+- Unique "straight line" path in Wasserstein space
+- Reveals intermediate consciousness states during transition
+- Geodesics are constant-speed in W₂ metric
+
+**Testable Prediction:**
+
+Empirical consciousness transitions should follow Wasserstein geodesics:
+
+```
+d/dt W₂(P_t, P_geodesic(t)) ≈ 0
+```
+
+**Test:** Compare observed P_t trajectory with geodesic interpolation P_geodesic(t).
+
+---
+
+## 5. Geometric Structures & Curvature
+
+### 5.1 Riemannian Curvature Tensor
+
+**Definition 5.1 (Riemann Curvature):**
+
+```
+R^i_{jkl} = ∂_k Γ^i_{jl} - ∂_l Γ^i_{jk} + Γ^i_{mk} Γ^m_{jl} - Γ^i_{ml} Γ^m_{jk}
+```
+
+**Ricci Tensor:**
+
+```
+R_{ij} = R^k_{ikj} = g^{kl} R_{kilj}
+```
+
+**Scalar Curvature:**
+
+```
+R = g^{ij} R_{ij}
+```
+
+**Physical Interpretation for HIRM:**
+
+- **R > 0:** Consciousness states "attract" (geodesics focus)
+- **R < 0:** States "repel" (geodesics diverge)
+- **R → ∞ at C_crit:** Extreme curvature at phase transition
+
+**Critical Scaling:**
+
+```
+R(C) ~ |C - C_crit|^(-ν')
+```
+
+Where ν' is a curvature critical exponent.
+
+### 5.2 Geodesic Deviation Equation (Jacobi Equation)
+
+**Equation for Geodesic Separation:**
+
+```
+D²η^i/Dλ² + R^i_{jkl} u^j η^k u^l = 0
+```
+
+Where:
+- **η^i:** Separation vector between nearby geodesics
+- **u^i:** Tangent vector to reference geodesic
+- **D/Dλ:** Covariant derivative along geodesic
+
+**Physical Meaning:**
+- Measures how nearby consciousness trajectories converge/diverge
+- Curvature R causes focusing or defocusing
+- Critical curvature → extreme sensitivity to initial conditions
+
+**Near C_crit:**
+
+```
+D²η/Dλ² ≈ -R_typical η ~ |C - C_crit|^(-ν') η
+```
+
+**Prediction:** Geodesics focus rapidly toward critical manifold, then bifurcate.
+
+### 5.3 Sectional Curvature & Critical Geometry
+
+**Definition 5.2 (Sectional Curvature):**
+
+For 2-plane σ spanned by tangent vectors X, Y:
+
+```
+K(σ) = K(X,Y) = R(X,Y,Y,X) / (g(X,X)g(Y,Y) - g(X,Y)²)
+```
+
+**Hypothesis 5.1 (Critical Curvature):**
+
+Near criticality:
+```
+K_critical ~ -|C - C_crit|^(-σ)
+```
+
+**Negative sectional curvature** (hyperbolic geometry) in critical region causes:
+1. **Exponential divergence** of geodesics
+2. **Critical slowing down** (effective negative damping)
+3. **Sensitivity amplification** (butterfly effect)
+
+**Interpretation:**
+- Consciousness space becomes "saddle-shaped" near C_crit
+- Unstable equilibrium: Slight perturbations lead to large deviations
+- Geometric origin of consciousness "fragility" at transitions
+
+---
+
+## 6. Parallel Transport & Holonomy
+
+### 6.1 Parallel Transport
+
+**Definition 6.1 (Parallel Transport):**
+
+Vector field V is parallel-transported along curve γ(t) if:
+
+```
+∇_{γ̇} V = 0  ⟺  dV^i/dt + Γ^i_{jk} γ̇^j V^k = 0
+```
+
+**Physical Interpretation:**
+- How consciousness properties transform along trajectory
+- Path-dependent if curvature R ≠ 0
+- Intrinsic notion of "constant direction" on manifold
+
+**Example:**
+
+Transport self-reference vector R through sleep-wake cycle:
+- Start: R₀ at wake state (high R)
+- Transport through N2 → N3 → REM → wake
+- End: R_final may differ from R₀ (holonomy)
+
+**Prediction:** Consciousness properties after cyclic transition depend on path taken.
+
+### 6.2 Holonomy Group & Berry Phase
+
+**Definition 6.2 (Holonomy):**
+
+For closed curve γ: [0,1] → M with γ(0) = γ(1), parallel transport around γ defines:
+
+```
+H_γ: T_{γ(0)}M → T_{γ(0)}M
+```
+
+Set of all H_γ forms the **holonomy group** Hol(M).
+
+**Berry Phase Analog:**
+
+For cyclic consciousness evolution:
+
+```
+γ_B = i ∮_γ ⟨ψ(θ)| ∇_θ |ψ(θ)⟩ · dθ
+```
+
+Where |ψ(θ)⟩ is quantum state of consciousness layer (QIL).
+
+**Stokes' Theorem Form:**
+
+```
+γ_B = ∫_S F · dS
+```
+
+Where F is "consciousness field strength" (Berry curvature).
+
+**Predictions:**
+
+1. **Phase Memory:**
+   - Geometric phase accumulated during sleep cycle
+   - Observable in EEG phase coherence
+
+2. **Path Dependence:**
+   - Different routes through consciousness space yield different phases
+   - Anesthesia induction vs. natural sleep: distinct Berry phases
+
+3. **Adiabatic Evolution:**
+   - Slow transitions preserve geometric phases
+   - Fast transitions (sudden awakening): Berry phase disrupted
+
+4. **Quantization:**
+   - If consciousness space has non-trivial topology, γ_B ∈ 2πℤ
+   - Topological protection of consciousness states
+
+### 6.3 Non-Abelian Holonomy (Speculative Extension)
+
+**Hypothesis 6.1 (Non-Abelian Consciousness Gauge Theory):**
+
+If consciousness state space is non-simply connected, holonomy group may be non-Abelian:
+
+```
+H = 𝒫 exp(∮_γ A_i dx^i)
+```
+
+Where:
+- **A_i:** Consciousness connection (gauge field)
+- **𝒫:** Path-ordered exponential
+
+**Implications:**
+
+1. **Non-Commutativity:**
+   ```
+   [Transition A][Transition B] ≠ [Transition B][Transition A]
+   ```
+   Order of consciousness transitions matters.
+
+2. **Topological Protection:**
+   - Some consciousness states protected by topology
+   - Requires "unwinding" non-trivial loops to erase state
+
+3. **Anyonic Statistics (Highly Speculative):**
+   - Exchange of "consciousness particles" (elementary excitations)
+   - Potential connection to topological quantum computation
+
+**Testable (in principle):**
+- Does order of anesthesia + sensory deprivation matter?
+- Are some amnesia-resistant memories topologically protected?
+
+---
+
+## 7. Integration with HIRM Three-Layer Architecture
+
+### 7.1 Layer-Specific Metrics
+
+**Quantum Information Layer (QIL):**
+
+Fundamental metric from quantum Fisher information:
+
+```
+g^QIL_ij = Re⟨∂_i ψ | ∂_j ψ⟩ - Re⟨∂_i ψ | ψ⟩ Re⟨ψ | ∂_j ψ⟩
+```
+
+For mixed states ρ:
+```
+g^QIL_ij = ½ Tr[ρ L_i L_j]
+```
+Where L_i is symmetric logarithmic derivative.
+
+**Properties:**
+- Quantum-limited measurement precision
+- Bures metric (monotone under CPTP maps)
+- Quantifies distinguishability of quantum states
+
+**Consciousness Computation Layer (CCL):**
+
+Effective metric from information integration:
+
+```
+g^CCL_ij ≈ ∂²Φ/∂θ^i ∂θ^j + Correction terms from R, D
+```
+
+**Emergence:** g^CCL arises from coarse-graining g^QIL over microscopic degrees of freedom.
+
+**Macroscopic Observational Layer (MOL):**
+
+Classical Fisher information from neural measurements:
+
+```
+g^MOL_ij = Empirical Fisher information from EEG/fMRI
+```
+
+**Renormalization Group Flow:**
+
+```
+g^QIL → [RG flow] → g^CCL → [Coarse-graining] → g^MOL
+```
+
+Each arrow represents loss of information, but retention of consciousness-relevant structures.
+
+### 7.2 Vertical Information Flow (Across Layers)
+
+**Persistent Information Structure (PIS):**
+
+Topological invariants preserved across scales:
+- Betti numbers β_k (k-dimensional holes)
+- Persistent homology barcodes
+- Euler characteristic χ
+
+**Conjecture 7.1 (PIS Conservation):**
+
+```
+∫_QIL ω = ∫_CCL ω = ∫_MOL ω
+```
+
+Where ω is a closed differential form representing PIS information content.
+
+**Implications:**
+- Consciousness identity persists through transitions
+- Information-theoretic continuity despite state changes
+- Testable via topological data analysis
+
+### 7.3 Horizontal Dynamics (Within Each Layer)
+
+**Geodesic Flow Equations:**
+
+At each layer, consciousness evolves along geodesics:
+
+```
+d²θ^i/dt² + Γ^i_jk(layer) dθ^j/dt dθ^k/dt = F^i(external)
+```
+
+Where:
+- Γ(layer): Christoffel symbols for that layer's metric
+- F^i: External forcing (stimuli, perturbations)
+
+**Layer-Specific Dynamics:**
+
+- **QIL:** Quantum trajectory (wavefunction collapse events)
+- **CCL:** Information integration dynamics (Φ evolution)
+- **MOL:** Observable neural activity (EEG, fMRI signals)
+
+---
+
+## 8. Computational Implementation
+
+### 8.1 Metric Estimation from Neural Data
+
+**Algorithm 8.1 (Empirical Fisher Information):**
+
+```python
+import numpy as np
+from scipy.stats import gaussian_kde
+
+def estimate_fisher_metric(neural_data, theta_samples):
+    """
+    Estimate Fisher information metric from neural recordings.
+    
+    Parameters:
+    -----------
+    neural_data : array (n_samples, n_features)
+        Neural activity (EEG channels, firing rates, etc.)
+    theta_samples : array (n_samples, 3)
+        Consciousness parameters (Φ, R, D) for each sample
+    
+    Returns:
+    --------
+    g_ij : array (3, 3)
+        Fisher information metric at mean(theta_samples)
+    """
+    n_params = theta_samples.shape[1]
+    g = np.zeros((n_params, n_params))
+    
+    # Estimate p(x|θ) via kernel density
+    for i in range(n_params):
+        for j in range(i, n_params):
+            # Compute score functions
+            score_i = numerical_score(neural_data, theta_samples, i)
+            score_j = numerical_score(neural_data, theta_samples, j)
+            
+            # Fisher information
+            g[i,j] = np.mean(score_i * score_j)
+            g[j,i] = g[i,j]  # Symmetry
+    
+    return g
+
+def numerical_score(data, theta, param_idx, h=1e-5):
+    """Numerical derivative of log-likelihood."""
+    theta_plus = theta.copy()
+    theta_minus = theta.copy()
+    theta_plus[:,param_idx] += h
+    theta_minus[:,param_idx] -= h
+    
+    kde = gaussian_kde(data.T)
+    log_p_plus = kde.logpdf(data.T)
+    log_p_minus = kde.logpdf(data.T)
+    
+    return (log_p_plus - log_p_minus) / (2*h)
+```
+
+### 8.2 Geodesic Computation
+
+**Algorithm 8.2 (Geodesic Shooting):**
+
+```python
+import numpy as np
+from scipy.integrate import solve_ivp
+
+def compute_geodesic(g_func, theta_start, theta_end, n_points=100):
+    """
+    Compute geodesic between two consciousness states.
+    
+    Parameters:
+    -----------
+    g_func : callable
+        Function g(theta) returning metric tensor (3,3) at theta
+    theta_start, theta_end : array (3,)
+        Start and end points in (Φ, R, D) space
+    n_points : int
+        Number of points along geodesic
+    
+    Returns:
+    --------
+    geodesic : array (n_points, 3)
+        Path through consciousness space
+    """
+    
+    def christoffel(g, dg):
+        """Compute Christoffel symbols from metric and its derivatives."""
+        g_inv = np.linalg.inv(g)
+        Gamma = np.zeros((3, 3, 3))
+        for i in range(3):
+            for j in range(3):
+                for k in range(3):
+                    Gamma[i,j,k] = 0.5 * sum(
+                        g_inv[i,l] * (dg[l,k,j] + dg[l,j,k] - dg[j,k,l])
+                        for l in range(3)
+                    )
+        return Gamma
+    
+    def geodesic_eqs(t, y):
+        """Geodesic equations: y = [theta, theta_dot]."""
+        theta = y[:3]
+        theta_dot = y[3:]
+        
+        g = g_func(theta)
+        dg = numerical_gradient(g_func, theta)
+        Gamma = christoffel(g, dg)
+        
+        # d²θ^i/dt² = -Γ^i_jk dθ^j/dt dθ^k/dt
+        theta_ddot = -np.einsum('ijk,j,k->i', Gamma, theta_dot, theta_dot)
+        
+        return np.concatenate([theta_dot, theta_ddot])
+    
+    # Initial velocity (shooting method)
+    v0 = theta_end - theta_start  # Initial guess
+    
+    # Solve geodesic equation
+    y0 = np.concatenate([theta_start, v0])
+    sol = solve_ivp(geodesic_eqs, [0, 1], y0, 
+                    t_eval=np.linspace(0, 1, n_points))
+    
+    return sol.y[:3].T  # Return trajectory
+```
+
+### 8.3 Wasserstein Distance Computation
+
+**Algorithm 8.3 (Sinkhorn Algorithm):**
+
+```python
+import numpy as np
+import ot  # Python Optimal Transport library
+
+def wasserstein_distance_consciousness(P1, P2, samples1, samples2):
+    """
+    Compute Wasserstein-2 distance between consciousness distributions.
+    
+    Parameters:
+    -----------
+    P1, P2 : array (n_samples,)
+        Probability weights (must sum to 1)
+    samples1, samples2 : array (n_samples, 3)
+        Sample points in (Φ, R, D) space
+    
+    Returns:
+    --------
+    W2 : float
+        Wasserstein-2 distance
+    """
+    # Cost matrix: Euclidean distance squared
+    M = ot.dist(samples1, samples2, metric='euclidean')
+    M = M ** 2
+    
+    # Sinkhorn algorithm with entropic regularization
+    W2_squared = ot.sinkhorn2(P1, P2, M, reg=0.1)
+    
+    return np.sqrt(W2_squared)
+
+# Example usage
+def consciousness_evolution_wasserstein(eeg_data, window_size=500, step=100):
+    """Track consciousness distribution evolution via Wasserstein distance."""
+    n_windows = (len(eeg_data) - window_size) // step
+    W_timeline = []
+    
+    # Previous window distribution
+    window_prev = eeg_data[:window_size]
+    Phi_prev, R_prev, D_prev = compute_HIRM_features(window_prev)
+    samples_prev = np.column_stack([Phi_prev, R_prev, D_prev])
+    P_prev = np.ones(len(samples_prev)) / len(samples_prev)
+    
+    for i in range(1, n_windows):
+        # Current window
+        start = i * step
+        window_curr = eeg_data[start:start+window_size]
+        Phi_curr, R_curr, D_curr = compute_HIRM_features(window_curr)
+        samples_curr = np.column_stack([Phi_curr, R_curr, D_curr])
+        P_curr = np.ones(len(samples_curr)) / len(samples_curr)
+        
+        # Compute Wasserstein distance
+        W = wasserstein_distance_consciousness(
+            P_prev, P_curr, samples_prev, samples_curr
+        )
+        W_timeline.append(W)
+        
+        # Update for next iteration
+        P_prev, samples_prev = P_curr, samples_curr
+    
+    return np.array(W_timeline)
+```
+
+### 8.4 Visualization Tools
+
+**Algorithm 8.4 (Consciousness Manifold Visualization):**
+
+```python
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.manifold import MDS
+
+def visualize_consciousness_manifold(neural_data, theta_samples):
+    """
+    Visualize consciousness state space with geodesic distances.
+    """
+    # Compute pairwise geodesic distances
+    n_samples = len(theta_samples)
+    D = np.zeros((n_samples, n_samples))
+    
+    for i in range(n_samples):
+        for j in range(i+1, n_samples):
+            D[i,j] = compute_geodesic_distance(theta_samples[i], theta_samples[j])
+            D[j,i] = D[i,j]
+    
+    # Multidimensional scaling (embed in 3D)
+    mds = MDS(n_components=3, dissimilarity='precomputed')
+    embedding = mds.fit_transform(D)
+    
+    # 3D plot
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
+    
+    # Color by C = Φ·R·D
+    C_values = theta_samples[:,0] * theta_samples[:,1] * theta_samples[:,2]
+    scatter = ax.scatter(embedding[:,0], embedding[:,1], embedding[:,2],
+                         c=C_values, cmap='viridis', s=50)
+    
+    ax.set_xlabel('Geodesic Coordinate 1')
+    ax.set_ylabel('Geodesic Coordinate 2')
+    ax.set_zlabel('Geodesic Coordinate 3')
+    ax.set_title('Consciousness Manifold (Geodesic Distance Embedding)')
+    
+    plt.colorbar(scatter, label='C(t) [bits]')
+    plt.show()
+```
+
+---
+
+## 9. Testable Predictions
+
+### 9.1 Critical Divergence of Fisher Information
+
+**Prediction 9.1:**
+
+```
+I_F(C) ~ A |C - C_crit|^(-γ) + B    as C → C_crit
+```
+
+With γ ≈ 1.24 (3D Ising universality).
+
+**Experimental Test:**
+1. Induce anesthesia transitions (propofol, sevoflurane)
+2. Compute C(t) from high-density EEG
+3. Estimate I_F via bootstrap parameter estimation
+4. Fit power law near C_crit
+5. Extract γ and compare with universality prediction
+
+**Expected Signal:** Log-log plot shows linear region with slope -γ near transition.
+
+### 9.2 Geodesic Convergence Near Criticality
+
+**Prediction 9.2:**
+
+Consciousness trajectories converge to critical manifold before bifurcating:
+
+```
+d(trajectory, critical_surface) ~ exp(-λt)
+```
+
+Where λ is a Lyapunov exponent.
+
+**Test:**
+1. Track C(t), Φ(t), R(t), D(t) during transitions
+2. Identify critical manifold {C = C_crit}
+3. Measure distance from trajectory to manifold
+4. Fit exponential convergence
+
+**Signature:** Trajectories "funnel" into critical region, then split post-SRID.
+
+### 9.3 Wasserstein Distance Scaling
+
+**Prediction 9.3:**
+
+Consciousness state distributions exhibit scale-invariant Wasserstein distances near criticality:
+
+```
+W₂(P_t, P_{t+Δt}) ~ Δt^β    for C(t) ≈ C_crit
+```
+
+With β ≈ 0.5 (diffusive scaling) far from criticality, β < 0.5 (superdiffusive) near C_crit.
+
+**Test:**
+1. Compute W₂ between distributions at various time lags Δt
+2. Plot log W₂ vs. log Δt
+3. Extract exponent β
+4. Compare β near vs. far from C_crit
+
+**Expected:** Anomalous diffusion (β ≠ 0.5) in critical region.
+
+### 9.4 Berry Phase in Sleep Cycles
+
+**Prediction 9.4:**
+
+Consciousness states after complete sleep cycle exhibit geometric phase shift:
+
+```
+γ_Berry = ∮_{sleep cycle} A · dθ ≠ 0
+```
+
+Observable as phase coherence shift in EEG oscillations.
+
+**Test:**
+1. Record full-night sleep EEG
+2. Compute phase coherence across frequencies before and after sleep
+3. Check for systematic phase shift unaccounted by dynamical phase
+4. Correlate shift with sleep architecture (N2, N3, REM durations)
+
+**Signature:** Non-zero geometric phase proportional to "area" enclosed in consciousness state space.
+
+### 9.5 Natural Gradient in Neural Plasticity
+
+**Prediction 9.5:**
+
+Synaptic weight changes follow natural gradient:
+
+```
+Δw_ij ∝ [I_F^(-1)]_ij
+```
+
+**Test:**
+1. LTP/LTD experiments in hippocampal slices
+2. Simultaneously measure:
+   - Weight changes Δw (via whole-cell recordings)
+   - Fisher information I_F (via population activity)
+3. Compute correlation Δw vs. I_F^(-1)
+
+**Expected:** Strong positive correlation (R² > 0.7) if brain uses natural gradient.
+
+---
+
+## 10. Open Questions & Future Directions
+
+### 10.1 Mathematical Questions
+
+1. **Exact Metric Form:**
+   - What is the complete form of g_ij(Φ, R, D) including all cross-terms?
+   - Can it be derived from first principles (quantum information theory)?
+
+2. **Curvature Universality:**
+   - Does consciousness manifold belong to a known universality class?
+   - Are there topological invariants characterizing consciousness geometry?
+
+3. **Geodesic Completeness:**
+   - Is (M, g) geodesically complete, or are there singularities?
+   - What is geometric structure at C = 0 (unconscious boundary)?
+
+4. **Quantum Metric Emergence:**
+   - How exactly does g^MOL emerge from coarse-graining g^QIL?
+   - Can we prove a renormalization group flow theorem?
+
+### 10.2 Empirical Questions
+
+1. **Fisher Information Measurements:**
+   - Can we accurately estimate I_F from finite neural data?
+   - What is optimal sampling rate and window size?
+
+2. **Wasserstein Trajectories:**
+   - Do empirical transitions follow Wasserstein geodesics?
+   - If not, what forces cause deviations?
+
+3. **Curvature Observables:**
+   - Can we measure scalar curvature R directly from data?
+   - Are there neural correlates of high vs. low curvature regions?
+
+4. **Berry Phase Detection:**
+   - Is geometric phase observable in EEG coherence?
+   - Can we design experiments to maximize Berry phase signal?
+
+### 10.3 Theoretical Extensions
+
+1. **Non-Equilibrium Information Geometry:**
+   - Extend to non-equilibrium steady states (NESS)
+   - Incorporate entropy production rates
+
+2. **Stochastic Information Geometry:**
+   - Include thermal/quantum fluctuations explicitly
+   - Fokker-Planck dynamics on consciousness manifold
+
+3. **Quantum Information Geometry:**
+   - Full quantum Fisher metric at QIL
+   - Entanglement geometry and consciousness
+
+4. **Gauge Theory Formulation:**
+   - Is there a gauge principle underlying HIRM?
+   - Non-Abelian structure of consciousness transformations?
+
+---
+
+## 11. Connections to Other Frameworks
+
+### 11.1 Free Energy Principle (FEP)
+
+**Integration:**
+- Natural gradient = gradient flow on FEP landscape
+- Fisher metric = precision matrix in variational inference
+- Consciousness optimization = free energy minimization
+
+**Unified Framework:**
+```
+dθ/dt = -g^(-1) ∇F(θ) + √(2T g^(-1)) ξ(t)
+```
+Langevin dynamics on consciousness manifold with temperature T.
+
+### 11.2 Integrated Information Theory (IIT)
+
+**Information Geometry of IIT:**
+- Φ as scalar curvature of cause-effect space
+- Maximally irreducible conceptual structure (MICS) as geodesic
+- Metric on qualia space from Φ-structure
+
+**Open Question:** Is IIT Φ-structure compatible with HIRM Fisher metric?
+
+### 11.3 Global Neuronal Workspace (GNW)
+
+**Geometric Interpretation:**
+- Broadcasting = geodesic flow from local to global manifold
+- Ignition = crossing curvature threshold (high R region)
+- Access consciousness = projection onto high-curvature submanifold
+
+### 11.4 Predictive Processing (PP)
+
+**Natural Gradient Connection:**
+- Precision-weighted prediction error minimization
+- Hierarchical message passing = parallel transport across layers
+- Attention = local curvature amplification
+
+---
+
+## 12. Implementation Roadmap
+
+### Phase 1: Metric Estimation (Months 1-3)
+
+- [ ] Implement Fisher information estimators
+- [ ] Validate on synthetic data (known distributions)
+- [ ] Test on real EEG data from consciousness transitions
+- [ ] Characterize estimation uncertainty (bootstrap, cross-validation)
+
+### Phase 2: Geodesic Analysis (Months 4-6)
+
+- [ ] Develop robust geodesic solver (handling stiff equations)
+- [ ] Compute geodesics for sleep-wake, anesthesia transitions
+- [ ] Compare empirical trajectories to geodesic predictions
+- [ ] Identify deviations and external forcing
+
+### Phase 3: Wasserstein Dynamics (Months 7-9)
+
+- [ ] Large-scale Wasserstein distance computations
+- [ ] Time-resolved distribution tracking
+- [ ] Geodesic interpolation in Wasserstein space
+- [ ] Statistical tests for path-dependence (hysteresis)
+
+### Phase 4: Curvature & Topology (Months 10-12)
+
+- [ ] Ricci curvature estimation from metric
+- [ ] Persistent homology of consciousness manifold
+- [ ] Berry phase extraction from EEG coherence
+- [ ] Holonomy group characterization
+
+### Phase 5: Integration & Validation (Year 2)
+
+- [ ] Multi-dataset validation (EEG, fMRI, intracranial)
+- [ ] Cross-species comparisons (if data available)
+- [ ] Clinical applications (DOC assessment)
+- [ ] Publication of theoretical framework and empirical results
+
+---
+
+## 13. Conclusion
+
+This information-geometric framework provides:
+
+1. **Rigorous Mathematical Foundation:**
+   - Consciousness states as points on Riemannian manifold
+   - Fisher information metric captures distinguishability
+   - Geodesics represent natural transition pathways
+
+2. **Testable Predictions:**
+   - Critical divergence of Fisher information at C_crit
+   - Geodesic focusing and bifurcation during transitions
+   - Wasserstein distance scaling laws
+   - Berry phase in cyclic consciousness evolution
+   - Natural gradient in neural plasticity
+
+3. **Computational Tools:**
+   - Metric estimation from neural data
+   - Geodesic computation algorithms
+   - Optimal transport methods (Sinkhorn)
+   - Visualization of consciousness manifold
+
+4. **Theoretical Integration:**
+   - Connects HIRM with Free Energy Principle
+   - Natural gradient implements Bayesian inference
+   - Wasserstein geometry for distribution evolution
+   - Curvature and topology encode transition difficulty
+
+5. **Empirical Validation Path:**
+   - Clear experimental protocols
+   - Quantitative predictions with error estimates
+   - Multi-scale validation (EEG, fMRI, single-unit)
+
+**Next Steps:**
+- Implement computational framework (Python package)
+- Validate on existing consciousness transition datasets
+- Design targeted experiments to test geometric predictions
+- Publish theoretical framework and initial empirical results
+
+---
+
+## References
+
+**Information Geometry:**
+- Amari, S. (2016). *Information Geometry and Its Applications*. Springer.
+- Nielsen, F. (2020). An elementary introduction to information geometry. *Entropy*, 22(10), 1100.
+
+**Optimal Transport:**
+- Villani, C. (2009). *Optimal Transport: Old and New*. Springer.
+- Peyré, G., & Cuturi, M. (2019). Computational optimal transport. *Foundations and Trends in Machine Learning*, 11(5-6), 355-607.
+
+**Natural Gradient:**
+- Amari, S. (1998). Natural gradient works efficiently in learning. *Neural Computation*, 10(2), 251-276.
+- Martens, J. (2020). New insights and perspectives on the natural gradient method. *JMLR*, 21(146), 1-76.
+
+**Geometric Structures in Neuroscience:**
+- Giusti, C., et al. (2015). Clique topology reveals intrinsic geometric structure in neural correlations. *PNAS*, 112(44), 13455-13460.
+- Chung, S., & Abbott, L. F. (2021). Neural population geometry: An approach for understanding biological and artificial neural networks. *Current Opinion in Neurobiology*, 70, 137-144.
+
+**HIRM Framework:**
+- This work (2025)
+- Integration documents in project repository
+
+---
+
+**Document Version:** 1.0  
+**Last Updated:** October 26, 2025  
+**Status:** Mathematical Framework - Ready for Implementation  
+**Next Review:** After Phase 1 computational validation
+
+---
+
+END DOCUMENT

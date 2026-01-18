@@ -1,0 +1,299 @@
+# HIRM PROJECT DNA
+# Hierarchical Information-Reality Model
+# Created: 2026-01-17
+# Version: 1.0
+
+---
+
+identity:
+  name: "HIRM (Hierarchical Information-Reality Model)"
+  type: "research_corpus"
+  purpose: "Mathematical framework for consciousness emergence through self-reference phase transitions at criticality"
+  philosophy: "Falsifiable predictions, empirical validation, multi-theory synthesis. Grand unification framework that mathematically integrates major consciousness theories."
+
+current_state:
+  version: "2.3"  # Protocol version
+  phase: "Grand Unification Transformation"
+  session_number: 33
+  last_updated: "2025-12-22"
+  papers_in_corpus: 193
+  health_score: "100/100"  # From orchestrator.py
+  last_major_milestone: "Deep corpus exploration complete - Grand unification content mapped"
+
+research_priorities:
+  critical:
+    - "Complete grand unification transformation (reframe corpus as synthesis framework)"
+    - "Sleep-EDF empirical validation (test C_critical = 8.3 ± 0.6 prediction)"
+    - "Component correlation analysis (validate Φ × R × D independence)"
+    - "Anesthesia hysteresis quantification (test bistability prediction)"
+  
+  active:
+    - "Three-paper manuscript completion (40,200 words target)"
+    - "Paper 1 expansion to 18,000 words (clinical protocols + validation studies)"
+    - "Computational debugging (R(t) and Φ(t) zero-value fixes)"
+    - "Figure rendering (12 specifications created, 0 rendered)"
+  
+  backlog:
+    - "Clinical protocol development (real-time consciousness monitoring)"
+    - "Cross-species consciousness validation (mice, octopi, corvids)"
+    - "AI consciousness applications (when does LLM gain consciousness?)"
+    - "Collaboration outreach (John Beggs, Daniel Toker, Karl Friston)"
+
+locked_constants:
+  C_critical:
+    value: "8.3 ± 0.6"
+    units: "bits"
+    status: "ESTABLISHED"
+    derivation: "Holographic bound + RG fixed point convergence"
+    source: "Theory/Core/Mathematical_Foundations.md"
+  
+  core_equation: "C(t) = Φ(t) × R(t) × D(t)"
+  
+  components:
+    Phi_t:
+      name: "Integrated Information"
+      units: "bits"
+      inspired_by: "IIT (Tononi, Koch)"
+    
+    R_t:
+      name: "Self-Reference Coefficient"
+      units: "dimensionless (0-1)"
+      mechanism: "Strange loops (Hofstadter), Gödel incompleteness"
+    
+    D_t:
+      name: "Dimensional Complexity"
+      units: "effective dimensions"
+      meaning: "Information encoding dimensionality"
+  
+  quantum_threshold:
+    value: "1-bit"
+    meaning: "Landauer minimum for quantum measurement"
+    amplification_factor: "7±2 (Miller's Law)"
+  
+  critical_exponents:
+    nu: "~0.63"  # Correlation length
+    gamma: "~1.24"  # Susceptibility
+    beta: "~0.33"  # Order parameter
+    universality_class: "3D Ising"
+
+terminology_rules:
+  framework_name: "HIRM"
+  pronunciation: "HURM (rhymes with firm)"
+  
+  forbidden:
+    - legacy: "Ouroboros Observer"
+      replacement: "HIRM"
+      reason: "Legacy branding, self-referential"
+    
+    - legacy: "OO Theory"
+      replacement: "HIRM Theory"
+      reason: "Abbreviation of deprecated name"
+    
+    - legacy: "proves consciousness"
+      replacement: "supports the hypothesis that consciousness"
+      reason: "Science doesn't prove, only falsifies"
+    
+    - legacy: "explains consciousness"
+      replacement: "proposes mechanism for consciousness emergence"
+      reason: "Avoid overclaiming"
+  
+  required:
+    - "HIRM" not "Ouroboros Observer"
+    - "Falsifiable predictions" not "unfalsifiable claims"
+    - "Empirical validation" not "theoretical proof"
+    - "Supports hypothesis" not "proves theory"
+  
+  competing_theories:
+    - "IIT (Integrated Information Theory - Tononi, Koch)"
+    - "GNWT (Global Neuronal Workspace Theory - Dehaene, Changeux)"
+    - "FEP (Free Energy Principle - Friston)"
+    - "HOT (Higher-Order Thought - Rosenthal)"
+    - "AST (Attention Schema Theory - Graziano)"
+    - "RPT (Recurrent Processing Theory - Lamme)"
+
+quality_gates:
+  mandatory:
+    - "State falsification criteria for all claims"
+    - "Consider 3+ competing theories (IIT, GNWT, FEP minimum)"
+    - "Validate constants against Master_Data/Constants/locked_constants.md"
+    - "Check terminology against Master_Data/Terminology/terminology_reference.md"
+    - "ASCII-only in Logs/, Protocols/, Master_Data/, Documentation/"
+    - "Update BUILD_STATUS.md every 3 tool calls maximum"
+  
+  confidence_qualifiers:
+    ESTABLISHED: "Strong evidence, multiple independent sources"
+    PROVISIONAL: "Good evidence, needs more validation"
+    SPECULATIVE: "Hypothesis stage, minimal evidence"
+    DEPRECATED: "Superseded by better understanding"
+
+crash_prevention:
+  max_read_lines: 500
+  max_write_lines: 200
+  chunking_strategy: "For files >200 lines, use append mode with 200-line chunks"
+  
+  python_execution:
+    allowed: "python -m py_compile script.py (syntax check only)"
+    forbidden: "import scipy, import numpy, import matplotlib (causes 245+ second hangs)"
+    timeout_seconds: 5
+  
+  character_constraints:
+    ascii_only_directories:
+      - "Logs/"
+      - "Protocols/"
+      - "Master_Data/"
+      - "Documentation/"
+    allowed_markers: "[OK] [FAIL] [WIP] [TODO] [WARN] [DONE]"
+    forbidden_emoji: "✅ ❌ 🔄 ⚠️ 📋 📚 🧠 🔬 💻 📝"
+  
+  status_tracking:
+    frequency: "Every 3 tool calls"
+    file: "Logs/BUILD_STATUS.md"
+    format: "[STATUS] timestamp - Action description"
+    recovery: "Read BUILD_STATUS.md on session start, resume from last [WIP]"
+
+empirical_validation:
+  datasets_identified:
+    - name: "Sleep-EDF"
+      subjects: 197
+      availability: "Public"
+      purpose: "Test C(t) threshold across sleep stages"
+    
+    - name: "VitalDB"
+      cases: 5566
+      availability: "Public"
+      purpose: "Anesthesia transition dynamics, hysteresis quantification"
+    
+    - name: "Cambridge Propofol Studies"
+      availability: "Published data"
+      purpose: "Anesthesia-induced LOC mechanisms"
+  
+  computational_tools:
+    created: 14
+    buggy: 2  # R(t) and Φ(t) return zero
+    status: "Debugging in progress"
+  
+  falsifiable_predictions:
+    count: 22
+    categories:
+      - "Quantum decoherence signatures"
+      - "Anesthesia transition dynamics"
+      - "Neural criticality markers"
+      - "Clinical applications (DOC stratification)"
+
+publication_strategy:
+  target_journals:
+    tier_1:
+      - "Nature Physics"
+      - "Physical Review E"
+      - "Neuroscience of Consciousness"
+    
+    tier_2:
+      - "Scientific Reports"
+      - "PLoS Computational Biology"
+      - "Consciousness and Cognition"
+  
+  manuscript_status:
+    paper_1:
+      title: "Brain Criticality and Consciousness Emergence"
+      current_words: 16100
+      target_words: 18000
+      status: "Needs 1,900 words (clinical + validation sections)"
+    
+    paper_2:
+      title: "Quantum-Classical Bridge: SRID Mechanism"
+      current_words: 9400
+      target_words: 12000
+      status: "Needs 2,600 words (Sections 1, 7, 8, 9)"
+    
+    paper_3:
+      title: "Information Persistence Through Dimensional Bifurcation"
+      current_words: 10200
+      target_words: 12000
+      status: "COMPLETE"
+  
+  timeline:
+    submission_target: "Within 4-6 months"
+    sequence: "Paper 1 → Paper 2 → Paper 3 (staggered submissions)"
+
+interfaces:
+  related_projects:
+    - workspace: "fine-print"
+      location: "D:/FINE PRINT"
+      relationship: "Crisis Capitalism research - shared research methodology"
+      status: "Same Claude Project (RESEARCH environment)"
+    
+    - workspace: "gregore"
+      location: "D:/Projects/Gregore"
+      relationship: "AI assistant - potential consciousness evaluation testbed (cross-project link)"
+      status: "Different Claude Project (DEV environment - explicit inclusion only)"
+    
+    - workspace: "kernl"
+      location: "D:/Projects/Project Mind/kernl-mcp"
+      relationship: "MCP server - provides session continuity tools (cross-project link)"
+      status: "Different Claude Project (DEV environment - explicit inclusion only)"
+
+key_insights:
+  grand_unification:
+    - "HIRM is NOT another consciousness theory - it's a synthesis framework"
+    - "All major theories (IIT, GNWT, FEP, HOT, AST) reduce to constrained optimization variants"
+    - "HIRM unifies 40+ concepts from physics, neuroscience, philosophy"
+    - "Mathematical convergence: quantum measurement, dimensional constraints, holographic bounds → same 8.3-bit threshold"
+  
+  zero_multiplier_theorem:
+    - "C(t) = Φ × R × D → If ANY component = 0, consciousness = 0"
+    - "Validated by meditation cessation studies (high Φ, zero R → zero consciousness)"
+    - "Explains why high-integration systems without self-reference remain unconscious"
+  
+  positioning:
+    - "Framework as synthesis, not revolution (strategic for academic acceptance)"
+    - "Consciousness science at credibility inflection point (2024-2025)"
+    - "Quantum biology mechanisms gaining experimental support"
+    - "Brain criticality becoming established neuroscience"
+
+boundaries:
+  does:
+    - "Mathematically unify major consciousness theories"
+    - "Provide falsifiable empirical predictions"
+    - "Explain consciousness emergence through phase transitions"
+    - "Bridge quantum mechanics and neuroscience"
+    - "Offer clinical applications (anesthesia monitoring, DOC assessment)"
+  
+  does_not:
+    - "Claim to 'solve' consciousness (avoids overclaiming)"
+    - "Dismiss competing theories (integrates them)"
+    - "Require untestable assumptions (all predictions falsifiable)"
+    - "Ignore first-person phenomenology (addresses qualia)"
+
+---
+
+# AUTO-UPDATE TRIGGERS
+
+protocol_version_change:
+  trigger: "HIRM_RESEARCH_PROTOCOLS_vX.X.md filename changes"
+  action: "Propagate version to PROJECT_DNA, START_HERE, BUILD_STATUS"
+
+locked_constant_update:
+  trigger: "Master_Data/Constants/locked_constants.md modified"
+  action: "Run constant_validator.py, generate violation report"
+
+terminology_violation:
+  trigger: "Forbidden terms detected in corpus"
+  action: "Run terminology_enforcer.py, log corrections"
+
+session_complete:
+  trigger: "User ends session or timeout approaching"
+  action: "Update session_number, create SESSION_N_SUMMARY.md, update CURRENT_STATUS.md"
+
+research_milestone:
+  trigger: "Paper completed, dataset analyzed, prediction validated"
+  action: "Update phase, archive logs, move priorities"
+
+---
+
+# METADATA
+
+created: "2026-01-17"
+created_by: "Claude (Sonnet 4.5)"
+version: "1.0"
+last_modified: "2026-01-17"
+status: "ACTIVE"

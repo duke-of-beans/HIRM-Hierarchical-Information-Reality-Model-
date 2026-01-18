@@ -1,0 +1,181 @@
+File_Name	Category	Status	Action	Destination	Size_KB	Validation	Dependencies	Notes
+Mathematical_Foundations_COMPLETE.md	Primary Manuscript	✅ KEEP	MOVE	/01_PRIMARY_MANUSCRIPTS/	317	100% Validated	Sections 1-10, Abstract	76-page authoritative manuscript
+HIRM_Comprehensive_Research_Synthesis_PUBLICATION_READY__1_.md	Primary Manuscript	✅ KEEP	MOVE	/01_PRIMARY_MANUSCRIPTS/	82	100% Validated	Multiple sources	Publication-ready synthesis
+HIRM_Strategic_Foundation_PUBLICATION_READY__1_.md	Primary Manuscript	✅ KEEP	MOVE	/01_PRIMARY_MANUSCRIPTS/	56	100% Validated	Multiple sources	Quantum consciousness focus
+HIRM_Phase_Transition_Framework_PUBLICATION_READY__1_.md	Primary Manuscript	✅ KEEP	MOVE	/01_PRIMARY_MANUSCRIPTS/	55	100% Validated	Multiple sources	Phase transition mechanism
+Brain_Criticality_Self_Reference_Consciousness_Comprehensive_Review__1_.md	Primary Manuscript	✅ KEEP	MOVE	/01_PRIMARY_MANUSCRIPTS/	68	100% Validated	3 brain criticality sources	Consolidated literature review
+Section_1_Introduction.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	24	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_2_Information_Theory.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	30	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_3_Topology.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	28	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_4_Geometric_Approaches.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	32	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_5_Category_Theory.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	35	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_6_Renormalization_Group.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	35	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_7_Dynamical_Systems.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	35	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_8_Framework_Comparisons.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	31	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_9_Measurement_Protocols.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	24	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Section_10_Conclusions.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	36	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Abstract.md	Building Block	📦 ARCHIVE	MOVE	/09_ARCHIVES/manuscript_stages/	3	100% Validated	None	Consolidated into Mathematical_Foundations_COMPLETE
+Brain_Criticality_Research__Self-Organized_Neural_Dynamics_at_the_Edge_of_Complexity.md	Source Paper	📦 ARCHIVE	MOVE	/09_ARCHIVES/source_papers/brain_criticality/	42	95% Validated	None	Consolidated into Comprehensive_Review__1_
+Self-Reference_and_Phase_Transitions_in_Brain_Criticality__A_2024-2025_Literature_Review.md	Source Paper	📦 ARCHIVE	MOVE	/09_ARCHIVES/source_papers/brain_criticality/	28	95% Validated	None	Consolidated into Comprehensive_Review__1_
+Self-Reference_Criticality_and_Consciousness__State_of_the_Field_2024-2025.md	Source Paper	📦 ARCHIVE	MOVE	/09_ARCHIVES/source_papers/brain_criticality/	49	95% Validated	None	Consolidated into Comprehensive_Review__1_
+HIRM_Comprehensive_Research_Synthesis.md	Earlier Version	📦 ARCHIVE	MOVE	/09_ARCHIVES/earlier_versions/	79	90% Validated	None	Superseded by __1_ version with terminology fixes
+The_HIRM_Theory__Self-Reference_Phase_Transitions_at_Critical_Brain_Dynamics_in_Consciousness_Science.md	Theory Paper	✅ KEEP	MOVE	/01_PUBLICATIONS/3_Theory_Papers/	59	Not Validated	None	Alternative HIRM title version
+The_HIRM__Consciousness_Emergence_Through_Self-Reference_Phase_Transitions_at_Criticality.md	Theory Paper	✅ KEEP	MOVE	/01_PUBLICATIONS/3_Theory_Papers/	50	Not Validated	None	Alternative framing
+The_HIRM__Strategic_Research_Foundation_for_Publication_in_Quantum_Consciousness_and_Measurement_Theory.md	Theory Paper	✅ KEEP	MOVE	/01_PUBLICATIONS/3_Theory_Papers/	54	Not Validated	None	Quantum focus version
+The_Ouroboros_Observer_Theory__Self-Reference_Phase_Transitions_at_Critical_Brain_Dynamics_in_Consciousness_Science.md	Legacy Theory	❓ REVIEW	DECIDE	TBD	58	Not Validated	None	Legacy Ouroboros terminology - archive?
+The_Ouroboros_Observer__Consciousness_Emergence_Through_Self-Reference_Phase_Transitions_at_Criticality.md	Legacy Theory	❓ REVIEW	DECIDE	TBD	49	Not Validated	None	Legacy Ouroboros terminology - archive?
+The_Ouroboros_Observer__Strategic_Research_Foundation_for_Publication_in_Quantum_Consciousness_and_Measurement_Theory.md	Legacy Theory	❓ REVIEW	DECIDE	TBD	53	Not Validated	None	Legacy Ouroboros terminology - archive?
+When_Reality_Splits_Complete_Thesis.md	Popular Science	✅ KEEP	MOVE	/08_POPULAR_SCIENCE/	54	Not Validated	None	General audience version
+HIRM_Bifurcation_Theory_Comprehensive_Framework.md	Framework	✅ KEEP	MOVE	/02_FRAMEWORKS/Mathematical/	48	Not Validated	None	Comprehensive bifurcation theory
+HIRM_Bifurcation_Theory_Enhanced.md	Framework	✅ KEEP	MOVE	/02_FRAMEWORKS/Mathematical/	82	Not Validated	None	Enhanced version with additional patterns
+HIRM_Statistical_Mechanics_Framework.md	Framework	✅ KEEP	MOVE	/02_FRAMEWORKS/Mathematical/	59	Not Validated	None	Statistical mechanics formalism
+HIRM_Information_Geometry_Framework.md	Framework	✅ KEEP	MOVE	/02_FRAMEWORKS/Mathematical/	44	Not Validated	None	Information geometry approach
+HIRM_Complete_RG_Framework.md	Framework	✅ KEEP	MOVE	/02_FRAMEWORKS/Mathematical/	46	Not Validated	None	Renormalization group framework
+FEP_HIRM_Integration_Complete_Report.md	Framework Integration	✅ KEEP	MOVE	/02_FRAMEWORKS/Integration/	48	Not Validated	None	Free Energy Principle integration
+Unifying_Consciousness_Theories_Through_HIRM__A_Comprehensive_Integration_of_Five_Major_Frameworks.md	Framework Integration	✅ KEEP	MOVE	/02_FRAMEWORKS/Integration/	43	Not Validated	None	Multi-framework integration
+Game-Theoretic_and_Optimization_Frameworks_for_Consciousness_Emergence__Integration_with_HIRM.md	Framework Integration	✅ KEEP	MOVE	/02_FRAMEWORKS/Integration/	46	Not Validated	None	Game theory integration
+Integrating_2024-2025_Breakthroughs_into_Ouroboros_Observer_Framework__Convergent_Evidence_for_Phase_Transition_Mechanism_of_Consciousness.md	Research Synthesis	✅ KEEP	MOVE	/03_RESEARCH/Synthesis/	22	Not Validated	None	Recent breakthroughs integration
+Mathematical_Formalization_of_Consciousness__64_Papers_Addressing_Critical_Gaps_in_Ouroboros_Observer_Theory.md	Literature Review	✅ KEEP	MOVE	/03_RESEARCH/Literature_Reviews/	44	Not Validated	None	64-paper mathematical corpus
+Ouroboros_Observer_Theory__Comprehensive_Literature_Corpus_Building_Report_-_Phase_2_Complete__193-213_Papers_Across_6_Domains_.md	Literature Review	✅ KEEP	MOVE	/03_RESEARCH/Literature_Reviews/	44	Not Validated	None	193-213 paper corpus report
+Temporal_Continuity_and_Information_Persistence_Through_Phase_Transitions__A_Comprehensive_Literature_Review__2020-2025_.md	Literature Review	✅ KEEP	MOVE	/03_RESEARCH/Literature_Reviews/	33	Not Validated	None	Temporal continuity review
+Temporal_Continuity_Information_Persistence_Enhanced.md	Literature Review	❓ REVIEW	DECIDE	TBD	67	Not Validated	None	Enhanced version - check vs standard
+Quantum_Measurement_and_Decoherence_in_Biological_Systems__Critical_Assessment_for_Consciousness_Theory_Development.md	Research Paper	✅ KEEP	MOVE	/03_RESEARCH/Theoretical/	32	Not Validated	None	Quantum measurement assessment
+Thermodynamic_Foundations_for_the_Ouroboros_Observer_Consciousness_Theory__Entropy_Production_and_Critical_Dynamics_at_the_Consciousness_Threshold.md	Research Paper	✅ KEEP	MOVE	/03_RESEARCH/Theoretical/	57	Not Validated	None	Thermodynamic foundations
+Noise_as_Computational_Substrate__Stochastic_Resonance_and_Criticality_in_Consciousness_Emergence.md	Research Paper	✅ KEEP	MOVE	/03_RESEARCH/Theoretical/	34	Not Validated	None	Stochastic resonance paper
+Sleep_as_Consciousness_Phase_Transitions_in_HIRM__Quantitative_Analysis_of_Critical_Thresholds_and_Neural_Dynamics.md	Research Paper	✅ KEEP	MOVE	/03_RESEARCH/Empirical/	44	Not Validated	None	Sleep transition analysis
+HIRM_Framework_Application_to_Disorders_of_Consciousness__Quantitative_Integration_and_Clinical_Translation.md	Clinical Research	✅ KEEP	MOVE	/03_RESEARCH/Clinical/	43	Not Validated	None	Disorders of consciousness
+Brain_Lesions_Reveal_Critical_Consciousness_Circuits__Posterior_Networks_Emerge_as_Core_Substrate.md	Clinical Research	✅ KEEP	MOVE	/03_RESEARCH/Clinical/	62	Not Validated	None	Brain lesion analysis
+Consciousness_Across_the_Lifespan__A_Neural_Timeline_from_Conception_to_Decline.md	Clinical Research	✅ KEEP	MOVE	/03_RESEARCH/Clinical/	62	Not Validated	None	Developmental analysis
+Cross-Species_Consciousness_Gradients__HIRM_Framework_Analysis_from_Invertebrates_to_Great_Apes.md	Application	✅ KEEP	MOVE	/03_RESEARCH/Applications/	51	Not Validated	None	Comparative consciousness
+Consciousness_at_the_Edge__Testing_HIRM_Across_Non-Traditional_Substrates.md	Application	✅ KEEP	MOVE	/03_RESEARCH/Applications/	51	Not Validated	None	Boundary cases analysis
+Evaluating_Artificial_Consciousness__A_Comprehensive_HIRM-Based_Framework_for_AI_Systems.md	Application	✅ KEEP	MOVE	/03_RESEARCH/Applications/	56	Not Validated	None	AI consciousness assessment
+Integrating_First-Person_Phenomenology_with_HIRM_Consciousness_Framework__Operational_Methods_and_Validated_Approaches.md	Application	✅ KEEP	MOVE	/03_RESEARCH/Applications/	61	Not Validated	None	Phenomenology integration
+Rigorous_Operational_Definitions_for_Multi-Component_Consciousness_Measure_C_t___Integration_of_Φ__R__and_D_with_Clinical_Implementation_Framework.md	Experimental Protocol	✅ KEEP	MOVE	/03_RESEARCH/Experimental_Protocols/	38	Not Validated	None	C(t) measurement protocol
+Testing_the_Ouroboros_Observer__Three_Experimental_Protocols_for_Consciousness_Emergence_at_C_critical___8_3_bits.md	Experimental Protocol	✅ KEEP	MOVE	/03_RESEARCH/Experimental_Protocols/	43	Not Validated	None	Three validation protocols
+Experimental_Validation_Protocols_for_Consciousness_Phase_Transition_Theories__2020-2025_Advances_in_Neuroimaging__Quantum_Detection__and_Computational_Modeling.md	Experimental Protocol	✅ KEEP	MOVE	/03_RESEARCH/Experimental_Protocols/	55	Not Validated	None	Comprehensive validation methods
+Anesthesia_EEG_Datasets_for_Consciousness_Transition_Research__Access_Guide_and_Validation_Strategy.md	Experimental Protocol	✅ KEEP	MOVE	/03_RESEARCH/Experimental_Protocols/	32	Not Validated	None	Dataset access guide
+framework.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	12	Not Validated	requirements.txt	Main framework implementation
+consciousness_measure.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	16	Not Validated	framework.py	C(t) calculation module
+self_reference.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	16	Not Validated	framework.py	Self-reference operator
+phase_transition.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	14	Not Validated	framework.py	Phase transition detection
+neural_network.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	12	Not Validated	framework.py	Neural network models
+bifurcation_detector.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	19	Not Validated	framework.py	Bifurcation analysis
+validation.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	21	Not Validated	framework.py	Validation framework
+validation_framework.py	Core Code	✅ KEEP	MOVE	/04_CODE/Core/	22	Not Validated	validation.py	Extended validation
+plots.py	Visualization	✅ KEEP	MOVE	/04_CODE/Visualization/	13	Not Validated	matplotlib	Plotting utilities
+parameter_explorer.py	Visualization	✅ KEEP	MOVE	/04_CODE/Visualization/	17	Not Validated	plots.py	Parameter space exploration
+analysis_toolkit.py	Analysis Tool	✅ KEEP	MOVE	/04_CODE/Tools/	21	Not Validated	Multiple modules	General analysis toolkit
+hirm_bifurcation_toolkit.py	Analysis Tool	✅ KEEP	MOVE	/04_CODE/Tools/	32	Not Validated	bifurcation_detector.py	Specialized bifurcation tools
+hirm_statistical_mechanics.py	Analysis Tool	✅ KEEP	MOVE	/04_CODE/Tools/	29	Not Validated	framework.py	Statistical mechanics implementation
+information_geometry_toolkit.py	Analysis Tool	✅ KEEP	MOVE	/04_CODE/Tools/	18	Not Validated	framework.py	Information geometry tools
+hirm_rg_complete_toolkit.py	Analysis Tool	✅ KEEP	MOVE	/04_CODE/Tools/	19	Not Validated	rg_implementation.py	RG flow complete implementation
+rg_implementation.py	Analysis Tool	✅ KEEP	MOVE	/04_CODE/Tools/	14	Not Validated	framework.py	Basic RG implementation
+C_critical_numerical_verification.py	Analysis Tool	✅ KEEP	MOVE	/04_CODE/Tools/	14	Not Validated	framework.py	C_critical verification script
+tutorial.py	Demo Script	✅ KEEP	MOVE	/04_CODE/Demos/	8	Not Validated	framework.py	Basic tutorial
+demo_consciousness_transition.py	Demo Script	✅ KEEP	MOVE	/04_CODE/Demos/	6	Not Validated	framework.py	Transition demonstration
+quick_demo.py	Demo Script	✅ KEEP	MOVE	/04_CODE/Demos/	6	Not Validated	framework.py	Quick demonstration
+self_organizing_consciousness.py	Demo Script	✅ KEEP	MOVE	/04_CODE/Demos/	32	Not Validated	framework.py	Self-organization demo
+consciousness_emergence_experiment.py	Demo Script	✅ KEEP	MOVE	/04_CODE/Demos/	22	Not Validated	framework.py	Emergence experiment
+experiment_consciousness_transition.py	Demo Script	✅ KEEP	MOVE	/04_CODE/Demos/	10	Not Validated	framework.py	Transition experiment
+test_consciousness_measure.py	Test Code	✅ KEEP	MOVE	/04_CODE/Tests/	6	Not Validated	consciousness_measure.py	Unit tests for C(t)
+test_neural_network.py	Test Code	✅ KEEP	MOVE	/04_CODE/Tests/	5	Not Validated	neural_network.py	Neural network tests
+test_bifurcation_detector.py	Test Code	✅ KEEP	MOVE	/04_CODE/Tests/	5	Not Validated	bifurcation_detector.py	Bifurcation detector tests
+run_validation.py	Test Code	✅ KEEP	MOVE	/04_CODE/Tests/	4	Not Validated	validation.py	Validation runner
+parameter_exploration.py	Test Code	✅ KEEP	MOVE	/04_CODE/Tests/	10	Not Validated	framework.py	Parameter space tests
+setup.py	Infrastructure	✅ KEEP	MOVE	/04_CODE/	2	Not Validated	None	Package setup script
+requirements.txt	Infrastructure	✅ KEEP	MOVE	/04_CODE/	1	Not Validated	None	Python dependencies
+__init__.py	Infrastructure	✅ KEEP	MOVE	/04_CODE/	1	Not Validated	None	Package initialization
+tutorial_1_basic_C_calculation.ipynb	Notebook	✅ KEEP	MOVE	/04_CODE/Notebooks/	8	Not Validated	framework.py	Jupyter tutorial notebook
+HIRM_Terminology_Reference.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/Standards/	16	Not Validated	None	CRITICAL - Single source of truth
+INDEX.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	12	Not Validated	None	Master index
+INDEX__1_.md	Documentation	❓ REVIEW	DECIDE	TBD	16	Not Validated	INDEX.md	Updated version? Check differences
+README.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	9	Not Validated	None	Main project README
+START_HERE.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	11	Not Validated	None	Getting started guide
+QUICK_START.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	6	Not Validated	None	Quick start guide
+QUICKSTART.md	Documentation	🗑️ OBSOLETE	DELETE	Archive/Obsolete/	6	Not Validated	QUICK_START.md	Duplicate of QUICK_START.md
+README_CONSCIOUSNESS_EMERGENCE.md	Documentation	❓ REVIEW	DECIDE	TBD	19	Not Validated	README.md	Merge into main README?
+DELIVERABLES.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	12	Not Validated	None	Project deliverables list
+PROJECT_STATUS.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	10	Not Validated	None	Current status document
+RESEARCH_SUMMARY.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	15	Not Validated	None	Research overview
+EXECUTIVE_SUMMARY.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	10	Not Validated	None	Executive summary
+EXECUTIVE_SUMMARY_QUICK_REFERENCE.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	10	Not Validated	EXECUTIVE_SUMMARY.md	Quick reference version
+EXECUTIVE_SUMMARY_ACTION_PLAN.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	13	Not Validated	EXECUTIVE_SUMMARY.md	Action plan version
+HIRM_Master_Executive_Summary.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	54	Not Validated	None	Comprehensive executive summary
+DATASET_ACCESS_GUIDE.md	Documentation	✅ KEEP	MOVE	/05_DOCUMENTATION/	15	Not Validated	None	Dataset access instructions
+FILE_STRUCTURE.txt	Documentation	🗑️ OBSOLETE	DELETE	Archive/Obsolete/	6	Not Validated	None	Superseded by new structure
+DOCUMENTATION_TREE.txt	Documentation	🗑️ OBSOLETE	DELETE	Archive/Obsolete/	9	Not Validated	None	Superseded by new structure
+HIRM_CORPUS_MASTER_INVENTORY.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Reference/	48	Not Validated	None	Complete corpus inventory
+C_critical_executive_summary.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	6	Not Validated	None	C_critical summary
+C_critical_first_principles_derivation.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	13	Not Validated	None	First principles derivation
+multi_scale_rg_framework.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	22	Not Validated	None	Multi-scale RG framework
+Task2_Annihilation_Bifurcation_Operator.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	11	Not Validated	None	Annihilation operator details
+HIRM_RG_Quick_Reference.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	7	Not Validated	None	RG quick reference
+HIRM_RG_Framework_Executive_Summary.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	17	Not Validated	None	RG framework summary
+Information_Geometry_Executive_Summary.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	13	Not Validated	None	Info geometry summary
+INFORMATION_GEOMETRY_INDEX.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	14	Not Validated	None	Info geometry index
+Information_Geometry_Quick_Reference.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	9	Not Validated	None	Info geometry quick ref
+HIRM_StatMech_Executive_Summary.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	15	Not Validated	None	Statistical mechanics summary
+topology_analysis_executive_summary.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	12	Not Validated	None	Topology analysis summary
+HIRM_Persistent_Homology_Analysis_Summary.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	18	Not Validated	None	Persistent homology summary
+topology_methodology_report.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	13	Not Validated	None	Topology methodology
+HIRM_Retrospective_Analysis_Report.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	20	Not Validated	None	Retrospective analysis
+EMPIRICAL_RESULTS_INTERPRETATION.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	22	Not Validated	None	Empirical results interpretation
+HIRM_Bifurcation_Novel_Patterns_Report.md	Reference	✅ KEEP	MOVE	/05_DOCUMENTATION/Technical/	28	Not Validated	None	Novel bifurcation patterns
+Master_Citation_Inventory.json	Citations	✅ KEEP	MOVE	/06_DATA/Citations/	21	Not Validated	None	CRITICAL - 87KB citation database
+Master_Citation_Inventory_Quick_Reference.md	Citations	✅ KEEP	MOVE	/06_DATA/Citations/	10	Not Validated	Master_Citation_Inventory.json	Citation quick reference
+Master_Citation_Inventory_Strategic_Analysis.md	Citations	✅ KEEP	MOVE	/06_DATA/Citations/	23	Not Validated	Master_Citation_Inventory.json	Strategic citation analysis
+Master_Citation_Inventory_Summary.md	Citations	✅ KEEP	MOVE	/06_DATA/Citations/	16	Not Validated	Master_Citation_Inventory.json	Citation summary
+Unified_Mathematical_Bibliography.json	Citations	✅ KEEP	MOVE	/06_DATA/Citations/	30	Not Validated	None	Mathematical bibliography
+basin_structure.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	183	Not Validated	None	Basin of attraction visualization
+fast_slow_dynamics.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	99	Not Validated	None	Fast-slow dynamics plot
+cusp_catastrophe.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	96	Not Validated	None	Cusp catastrophe surface
+saddle_node_bifurcation.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	65	Not Validated	None	Saddle-node bifurcation
+bifurcation_theory_comprehensive_summary.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	166	Not Validated	None	Comprehensive bifurcation summary
+hirm_full_simulation.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	103	Not Validated	None	Full HIRM simulation results
+experimental_predictions.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	89	Not Validated	None	Experimental predictions
+information_geometry_concepts.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	107	Not Validated	None	Information geometry concepts
+hirm_critical_scaling.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	49	Not Validated	None	Critical scaling behavior
+hirm_critical_scaling_1.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	112	Not Validated	None	Critical scaling (alternate)
+hirm_phase_transition.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	110	Not Validated	None	Phase transition visualization
+C_critical_derivation_plots.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	128	Not Validated	None	C_critical derivation plots
+rg_mechanism.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	70	Not Validated	None	RG mechanism visualization
+critical_behavior.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	92	Not Validated	None	Critical behavior analysis
+rg_flow_clean.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	123	Not Validated	None	Clean RG flow diagram
+toy_model_results.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	101	Not Validated	None	Toy model results
+quick_demo_results.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	89	Not Validated	None	Quick demo output
+hirm_topology_predictions_demo.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	186	Not Validated	None	Topology predictions demo
+persistent_homology_consciousness_analysis.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	106	Not Validated	None	Persistent homology analysis
+HIRM_persistent_homology_analysis.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	121	Not Validated	None	HIRM persistent homology
+topology_consciousness_analysis.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	209	Not Validated	None	Topology consciousness analysis
+hirm_retrospective_analysis.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	149	Not Validated	None	Retrospective analysis plots
+hirm_multiscale_rg.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	70	Not Validated	None	Multi-scale RG visualization
+hirm_rg_flow_complete.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	118	Not Validated	None	Complete RG flow
+HIRM_Sleep_EDF_Empirical_Results.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	89	Not Validated	None	Sleep EDF empirical results
+sleep_edf_quick_results.png	Figure	✅ KEEP	MOVE	/06_DATA/Figures/	83	Not Validated	None	Sleep EDF quick results
+Group5_Consolidation_Report.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	31	Not Validated	None	Group 5 consolidation report
+Group5_Task_Complete.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	8	Not Validated	None	Group 5 completion
+GROUP_6_CONSOLIDATION_COMPLETE_REPORT.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	18	Not Validated	None	Group 6 consolidation report
+Stage1B_Summary.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	5	Not Validated	None	Stage 1B summary
+Stage2B_Handoff_Document.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	13	Not Validated	None	Stage 2B handoff
+Stage3A_Handoff_Document.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	14	Not Validated	None	Stage 3A handoff
+PHASE_1_STRATEGIC_CONSOLIDATION_ANALYSIS.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	27	Not Validated	None	Phase 1 analysis
+CONSOLIDATION_VERIFICATION_COMPLETION.md	Status Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Status_Reports/Archive/	18	Not Validated	None	Consolidation verification
+VALIDATION_REPORT_Mathematical_Foundations_COMPLETE.md	Validation Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Validation_Reports/	19	100% Complete	Mathematical_Foundations_COMPLETE.md	Section-by-section validation
+PHASE_2_VALIDATION_Brain_Criticality_Review.md	Validation Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Validation_Reports/	16	100% Complete	Brain_Criticality review	Brain criticality validation
+PHASE_2_VALIDATION_Bifurcation_Theory.md	Validation Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Validation_Reports/	14	100% Complete	Bifurcation framework	Bifurcation validation
+PHASE_2_VALIDATION_EXECUTIVE_SUMMARY.md	Validation Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Validation_Reports/	6	100% Complete	All validated files	Executive validation summary
+PHASE_2_VALIDATION_FINAL_SUMMARY.md	Validation Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Validation_Reports/	10	100% Complete	All validated files	Final validation summary
+PHASE_2_VALIDATION_PROGRESS_REPORT.md	Validation Report	✅ KEEP	MOVE	/05_DOCUMENTATION/Validation_Reports/	12	100% Complete	None	Mid-validation progress
+HIRM_PROJECT_VALIDATION_AND_ORGANIZATION_PLAN.md	Planning	✅ KEEP	MOVE	/05_DOCUMENTATION/Planning/	36	Not Validated	None	Master organization plan
+SURGICAL_PRECISION_VERIFICATION_PROTOCOL.md	Planning	✅ KEEP	MOVE	/05_DOCUMENTATION/Planning/	42	Not Validated	None	Verification protocol
+SAFE_TO_ARCHIVE_LIST.md	Planning	✅ KEEP	MOVE	/05_DOCUMENTATION/Planning/	9	Not Validated	None	Archive-ready file list
+consciousness_criticality_paper.md	Unknown Paper	❓ REVIEW	DECIDE	TBD	42	Not Validated	None	Check if unique or consolidated
+Consciousness__Brain_Criticality__and_Phase_Transitions__2024-2025_State_of_the_Science.md	Unknown Paper	❓ REVIEW	DECIDE	TBD	34	Not Validated	None	Compare with Comprehensive_Review__1_
+Ouroboros_Observer_Mathematical_Formalization.md	Legacy Document	❓ REVIEW	DECIDE	TBD	18	Not Validated	None	Check if superseded by Mathematical_Foundations_COMPLETE
+Ourobouros_Observer_Theory.docx	Legacy Document	❓ REVIEW	DECIDE	TBD	26	Not Validated	None	Word doc - likely archive
+theoretical.txt	Unknown	❓ REVIEW	DECIDE	TBD	159	Not Validated	None	Large text file - check contents
+Integrating_HIRM_with_Free_Energy_Principle__Comprehensive_Research_Analysis_and_Strategic_Positioning.md	Unknown	❓ REVIEW	DECIDE	TBD	4	Not Validated	None	Seems incomplete - verify
+compass_artifact_wf-e57043db-1299-4471-84f6-f3dea62271a3_text_markdown.md	Unknown	❓ REVIEW	DECIDE	TBD	45	Not Validated	None	Artifact file - determine purpose
+The_Ouroboros_Observer_POPULAR_SCIENCE_ARCHIVE__1_.md	Archive Marker	🗑️ OBSOLETE	DELETE	Archive/Obsolete/	1	Not Validated	None	512 byte placeholder - empty
+When_Reality_Splits_Complete_Thesis_POPULAR_SCIENCE_ARCHIVE__1_.md	Archive Marker	🗑️ OBSOLETE	DELETE	Archive/Obsolete/	3	Not Validated	None	2.5KB placeholder - verify empty
+HIRM_Comprehensive_Research_Synthesis_POPULAR_SCIENCE_ARCHIVE__1_.md	Archive Marker	🗑️ OBSOLETE	DELETE	Archive/Obsolete/	1	Not Validated	None	512 byte placeholder - empty

@@ -1,0 +1,29 @@
+# Backups - keep local only
+_Backups/
+
+# Temporary files
+Temp/
+*.tmp
+*.temp
+~$*
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large binary files (optional - uncomment if needed)
+# *.zip
+# *.pdf
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
