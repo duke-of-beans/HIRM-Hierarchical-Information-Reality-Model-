@@ -1,11 +1,18 @@
 """
-Consciousness Measure Calculator
-=================================
+Consciousness Measure Calculator - CONSTITUTION COMPLIANT
+==========================================================
 
-Calculate C(t) = Phi(t) * R(t) * [1 - exp(-lambda*D(t))]
+Calculate C(t) = Phi(t) * R_theory(t) * D_eff(t)
 
-Implements multiple methods for approximating integrated information (Phi),
-measuring recursive depth (R), and distance from criticality (D).
+Implements Variable Constitution v1.0:
+- Pure multiplicative formula (no saturation)
+- R_theory = 1 + 2*R_obs transform
+- D as dimensional embedding (PCA-based), NOT distance to criticality
+- sigma(t) tracked separately for bifurcation analysis
+
+VERSION: 2.0 - Variable Constitution Compliant
+UPDATED: 2026-01-17 Session 36
+SOURCE: Master_Data/Variables/VARIABLE_CONSTITUTION_V1.md
 """
 
 import numpy as np
@@ -20,32 +27,46 @@ class ConsciousnessMeasure:
     """
     Calculate the consciousness measure C(t) and its components.
     
+    VARIABLE CONSTITUTION COMPLIANT:
+    --------------------------------
+    C(t) = Phi(t) * R_theory(t) * D_eff(t)
+    
+    Where:
+    - Phi(t) in [0, ~20] bits (integrated information)
+    - R_theory(t) in [1, 3] (self-referential coupling)
+    - D_eff(t) in [0, 1] (dimensional embedding, normalized)
+    - sigma(t) tracked separately (branching parameter for criticality)
+    
     Parameters
     ----------
-    lambda_param : float, optional
-        Sensitivity parameter for criticality distance, default=2.0
     Phi_method : str, optional
         Method for calculating Phi: 'geometric', 'stochastic', 'PSI'
     temporal_window : int, optional
         Number of timesteps to use for calculating R(t)
+    D_max : float, optional
+        Normalization constant for D_eff (default 8.0, calibrate empirically)
     
     Methods
     -------
     calculate_C : Calculate full C(t) measure
     calculate_Phi : Calculate integrated information
-    calculate_R : Calculate recursive depth
-    calculate_D : Calculate distance from criticality
+    calculate_R_obs : Calculate observable self-reference [0,1]
+    calculate_R_theory : Transform R_obs to theoretical coupling [1,3]
+    calculate_D_eff : Calculate dimensional embedding (PCA-based)
+    calculate_sigma : Calculate branching parameter (separate from D)
     """
     
     def __init__(
         self, 
-        lambda_param: float = 2.0,
-        Phi_method: str = 'geometric',
-        temporal_window: int = 100
+        Phi_method: str = 'PSI',  # Changed to PSI for low-dimensional systems
+        temporal_window: int = 100,
+        D_max: float = 1.5,  # CALIBRATED: Empirical fit to Sleep-EDF data
+        Phi_scale: float = 10.0  # CALIBRATED: Geometric method scaling factor
     ):
-        self.lambda_param = lambda_param
         self.Phi_method = Phi_method
         self.temporal_window = temporal_window
+        self.D_max = D_max
+        self.Phi_scale = Phi_scale
     
     def calculate_C(
         self, 
@@ -55,6 +76,8 @@ class ConsciousnessMeasure:
     ) -> Dict[str, float]:
         """
         Calculate full C(t) measure and components.
+        
+        CONSTITUTION COMPLIANT: C = Phi * R_theory * D_eff
         
         Parameters
         ----------
@@ -68,34 +91,47 @@ class ConsciousnessMeasure:
         Returns
         -------
         results : dict
-            Dictionary with C, Phi, R, D, and their metadata
+            Dictionary with C, Phi, R_obs, R_theory, D_eff, sigma, and metadata
         """
         # Ensure 2D activity
         if activity.ndim == 1:
             activity = activity[:, np.newaxis]
         
-        # Calculate components
+        # Calculate components per Variable Constitution
         Phi = self.calculate_Phi(activity, connectivity)
-        D = self.calculate_D(activity, connectivity)
+        D_eff = self.calculate_D_eff(activity)
+        sigma = self.calculate_sigma(activity, connectivity)
         
         # R requires history
         if history is not None:
-            R = self.calculate_R(history)
+            R_obs = self.calculate_R_obs(history)
+            R_theory = self.calculate_R_theory(R_obs)
         else:
-            R = 1.0  # Default for no history
-            warnings.warn("No history provided, setting R=1.0")
+            R_obs = 0.0  # No self-reference observable
+            R_theory = 1.0  # Baseline threshold
+            warnings.warn("No history provided, setting R_obs=0, R_theory=1.0 (baseline)")
         
-        # Calculate C(t)
-        C = Phi * R * (1 - np.exp(-self.lambda_param * D))
+        # Calculate C(t) - PURE MULTIPLICATIVE per Constitution
+        C = Phi * R_theory * D_eff
         
         return {
             'C': C,
             'Phi': Phi,
-            'R': R,
-            'D': D,
+            'R_obs': R_obs,
+            'R_theory': R_theory,
+            'D_eff': D_eff,
+            'sigma': sigma,
             'components': {
-                'integration_term': Phi * R,
-                'criticality_term': 1 - np.exp(-self.lambda_param * D)
+                'integration': Phi,
+                'self_reference_coupling': R_theory,
+                'dimensional_embedding': D_eff,
+                'branching_parameter': sigma
+            },
+            'metadata': {
+                'constitution_version': '1.0',
+                'equation': 'C = Phi * R_theory * D_eff',
+                'R_transform': 'R_theory = 1 + 2*R_obs',
+                'criticality_status': 'subcritical' if sigma < 1 else 'supercritical' if sigma > 1 else 'critical'
             }
         }
     
@@ -120,18 +156,190 @@ class ConsciousnessMeasure:
         Returns
         -------
         Phi : float
-            Integrated information in bits
+            Integrated information in bits, range [0, ~20]
         """
         method = method or self.Phi_method
         
         if method == 'geometric':
-            return self._calculate_Phi_geometric(activity, connectivity)
+            Phi_raw = self._calculate_Phi_geometric(activity, connectivity)
+            return Phi_raw * self.Phi_scale  # Apply empirical scaling
         elif method == 'stochastic':
-            return self._calculate_Phi_stochastic(activity, connectivity)
+            Phi_raw = self._calculate_Phi_stochastic(activity, connectivity)
+            return Phi_raw * self.Phi_scale
         elif method == 'PSI':
             return self._calculate_Phi_PSI(activity, connectivity)
         else:
             raise ValueError(f"Unknown Phi method: {method}")
+    
+    def calculate_R_obs(self, activity_history: np.ndarray) -> float:
+        """
+        Calculate OBSERVABLE self-reference R_obs(t) from temporal patterns.
+        
+        CONSTITUTION: R_obs in [0, 1]
+        
+        This is a PROXY measure. Full clinical composite requires:
+        R_obs = 0.35*R_PAC + 0.25*R_TC + 0.20*R_DMN + 0.20*R_LZC
+        
+        Current implementation uses autocorrelation as proxy for LZC component.
+        
+        Parameters
+        ----------
+        activity_history : np.ndarray
+            Historical activity patterns (N, T)
+        
+        Returns
+        -------
+        R_obs : float
+            Observable self-reference measure in [0, 1]
+        """
+        if activity_history.shape[1] < 10:
+            return 0.0  # Insufficient history
+        
+        # Use only recent history
+        T_window = min(self.temporal_window, activity_history.shape[1])
+        recent = activity_history[:, -T_window:]
+        
+        # Calculate autocorrelation at multiple time scales
+        max_lag = min(20, T_window // 2)
+        autocorr = []
+        
+        for neuron_activity in recent:
+            acf = self._autocorrelation(neuron_activity, max_lag)
+            autocorr.append(acf)
+        
+        autocorr = np.array(autocorr).mean(axis=0)
+        
+        # Proxy for self-reference: slower decay = more self-modeling
+        # Map to [0, 1] range
+        if len(autocorr) > 1:
+            # Area under autocorrelation curve as proxy
+            R_proxy = np.sum(np.abs(autocorr)) / len(autocorr)
+            R_obs = np.clip(R_proxy, 0.0, 1.0)
+        else:
+            R_obs = 0.0
+        
+        return R_obs
+    
+    def calculate_R_theory(self, R_obs: float) -> float:
+        """
+        Transform observable R to theoretical coupling parameter.
+        
+        CONSTITUTION LOCKED TRANSFORM:
+        R_theory = 1 + 2 * R_obs
+        
+        Parameters
+        ----------
+        R_obs : float
+            Observable self-reference in [0, 1]
+        
+        Returns
+        -------
+        R_theory : float
+            Theoretical coupling in [1, 3]
+        """
+        # Locked transform per Variable Constitution v1.0
+        R_theory = 1.0 + 2.0 * R_obs
+        
+        # Validate range
+        if R_theory < 1.0 or R_theory > 3.0:
+            warnings.warn(f"R_theory={R_theory:.3f} outside expected [1,3] range")
+        
+        return R_theory
+    
+    def calculate_D_eff(self, activity: np.ndarray) -> float:
+        """
+        Calculate dimensional embedding D_eff via PCA participation ratio.
+        
+        CONSTITUTION: D = D_eff in [0, 1] (normalized)
+        
+        Method: Participation ratio of eigenvalues
+        D_eff = (sum lambda_i)^2 / sum(lambda_i^2)
+        Then normalize: D = D_eff / D_max
+        
+        Parameters
+        ----------
+        activity : np.ndarray
+            Activity pattern (N,) or (N, T)
+        
+        Returns
+        -------
+        D_eff : float
+            Normalized dimensional embedding in [0, 1]
+        """
+        if activity.ndim == 1:
+            # Single timepoint - limited dimensionality estimate
+            # Use spread as proxy
+            D_raw = 1.0
+        else:
+            # Multiple timepoints - can do PCA
+            N, T = activity.shape
+            
+            if T < 3:
+                D_raw = 1.0
+            else:
+                # Center data
+                activity_centered = activity - activity.mean(axis=1, keepdims=True)
+                
+                # Covariance matrix
+                cov = (activity_centered @ activity_centered.T) / T
+                
+                # Eigenvalues
+                eigenvalues = np.linalg.eigvalsh(cov)
+                eigenvalues = eigenvalues[eigenvalues > 1e-12]  # More lenient threshold
+                
+                if len(eigenvalues) == 0:
+                    D_raw = 0.0
+                else:
+                    # Participation ratio
+                    sum_eig = np.sum(eigenvalues)
+                    sum_eig_sq = np.sum(eigenvalues**2)
+                    
+                    # BUG FIX: Eigenvalues from real EEG can be tiny (~10^-9)
+                    # sum_eig_sq can be ~10^-18, so use relative threshold
+                    if sum_eig_sq > 1e-20:
+                        D_raw = (sum_eig**2) / sum_eig_sq
+                    else:
+                        D_raw = 0.0
+        
+        # Normalize to [0, 1]
+        D_eff = D_raw / self.D_max
+        D_eff = np.clip(D_eff, 0.0, 1.0)
+        
+        return D_eff
+    
+    def calculate_sigma(
+        self, 
+        activity: np.ndarray,
+        connectivity: Union[np.ndarray, csr_matrix]
+    ) -> float:
+        """
+        Calculate branching parameter sigma(t).
+        
+        CONSTITUTION: sigma is SEPARATE from D_eff
+        
+        sigma = 1 is critical
+        sigma < 1 is subcritical (activity decays)
+        sigma > 1 is supercritical (activity grows)
+        
+        Parameters
+        ----------
+        activity : np.ndarray
+            Activity pattern (N,) or (N, T)
+        connectivity : np.ndarray or csr_matrix
+            Connectivity matrix
+        
+        Returns
+        -------
+        sigma : float
+            Branching parameter (0 to infinity, typically 0.8-1.2)
+        """
+        if activity.ndim == 2:
+            activity = activity.mean(axis=1)
+        
+        # Calculate branching parameter from spectral radius
+        sigma = self._calculate_branching_parameter(activity, connectivity)
+        
+        return sigma
     
     def _calculate_Phi_geometric(
         self, 
@@ -182,8 +390,9 @@ class ConsciousnessMeasure:
             W[np.ix_(part1, part2)]
         )
         
-        # Phi as effective information
-        Phi = MI / np.log(2)  # Convert to bits
+        # Phi is mutual information (already in bits)
+        # BUG FIX: Don't divide by log(2), MI is already in bits
+        Phi = MI
         
         return max(0, Phi)  # Ensure non-negative
     
@@ -242,18 +451,24 @@ class ConsciousnessMeasure:
         Practical Simplicity Index (PSI).
         
         Fast approximation based on network complexity measures.
+        FIXED: Properly handles temporal data (N, T) instead of collapsing to (N,)
         """
+        # Handle temporal data properly
         if activity.ndim == 2:
-            activity = activity.mean(axis=1)
+            N, T = activity.shape
+            # Use temporal variance as measure of node diversity
+            node_vars = activity.var(axis=1)  # Variance across time for each node
+            node_vars = node_vars / (node_vars.sum() + 1e-10)  # Normalize
+            node_vars = node_vars[node_vars > 0]
+            H_nodes = -np.sum(node_vars * np.log2(node_vars + 1e-10))
+        else:
+            # Single timepoint (static)
+            N = len(activity)
+            hist, _ = np.histogram(activity, bins=10, density=True)
+            hist = hist[hist > 0]
+            H_nodes = -np.sum(hist * np.log2(hist + 1e-10))
         
-        N = len(activity)
-        
-        # Node diversity (entropy of activity distribution)
-        hist, _ = np.histogram(activity, bins=10, density=True)
-        hist = hist[hist > 0]
-        H_nodes = -np.sum(hist * np.log2(hist + 1e-10))
-        
-        # Connection diversity
+        # Connection diversity (same for both cases)
         if hasattr(connectivity, 'toarray'):
             W = connectivity.toarray()
         else:
@@ -266,82 +481,17 @@ class ConsciousnessMeasure:
         H_connections = -np.sum(strengths * np.log2(strengths + 1e-10))
         
         # PSI combines node and connection diversity
-        PSI = np.sqrt(H_nodes * H_connections)
+        # BUG FIX: Check for negative values before sqrt
+        product = H_nodes * H_connections
+        if product < 0:
+            product = 0.0
+        PSI = np.sqrt(product)
+        
+        # Handle NaN
+        if np.isnan(PSI):
+            PSI = 0.0
         
         return PSI
-    
-    def calculate_R(self, activity_history: np.ndarray) -> float:
-        """
-        Calculate recursive depth R(t) from temporal patterns.
-        
-        Parameters
-        ----------
-        activity_history : np.ndarray
-            Historical activity patterns (N, T)
-        
-        Returns
-        -------
-        R : float
-            Recursive depth measure (â‰¥ 1.0)
-        """
-        if activity_history.shape[1] < 10:
-            return 1.0  # Insufficient history
-        
-        # Use only recent history
-        T_window = min(self.temporal_window, activity_history.shape[1])
-        recent = activity_history[:, -T_window:]
-        
-        # Calculate autocorrelation at multiple time scales
-        max_lag = min(20, T_window // 2)
-        autocorr = []
-        
-        for neuron_activity in recent:
-            acf = self._autocorrelation(neuron_activity, max_lag)
-            autocorr.append(acf)
-        
-        autocorr = np.array(autocorr).mean(axis=0)
-        
-        # R is related to decay rate of autocorrelation
-        # Slower decay = more recursion = higher R
-        if len(autocorr) > 1:
-            decay_rate = -np.polyfit(range(len(autocorr)), 
-                                     np.log(np.abs(autocorr) + 1e-10), 1)[0]
-            R = 1.0 + np.exp(-decay_rate)  # Maps decay to R âˆˆ [1, ~3]
-        else:
-            R = 1.0
-        
-        return min(R, 3.0)  # Cap at reasonable maximum
-    
-    def calculate_D(
-        self, 
-        activity: np.ndarray,
-        connectivity: Union[np.ndarray, csr_matrix]
-    ) -> float:
-        """
-        Calculate distance from criticality D(t).
-        
-        Parameters
-        ----------
-        activity : np.ndarray
-            Activity pattern (N,) or (N, T)
-        connectivity : np.ndarray or csr_matrix
-            Connectivity matrix
-        
-        Returns
-        -------
-        D : float
-            Distance from criticality (0 = critical, >0 = sub/supercritical)
-        """
-        if activity.ndim == 2:
-            activity = activity.mean(axis=1)
-        
-        # Calculate branching parameter
-        branching = self._calculate_branching_parameter(activity, connectivity)
-        
-        # Distance from critical value (1.0)
-        D = np.abs(branching - 1.0)
-        
-        return D
     
     def _calculate_branching_parameter(
         self, 
@@ -351,7 +501,7 @@ class ConsciousnessMeasure:
         """
         Calculate branching parameter from activity and connectivity.
         
-        Ïƒ = average number of spikes in next generation per spike
+        sigma = average number of spikes in next generation per spike
         """
         # Approximate using spectral radius of connectivity
         if hasattr(connectivity, 'toarray'):
@@ -377,9 +527,9 @@ class ConsciousnessMeasure:
         # Weight by activity level
         activity_level = np.mean(activity > np.median(activity))
         
-        branching = spectral_radius * activity_level
+        sigma = spectral_radius * activity_level
         
-        return branching
+        return sigma
     
     def _calculate_entropy(self, x: np.ndarray) -> float:
         """Calculate Shannon entropy of binary array."""
@@ -400,10 +550,13 @@ class ConsciousnessMeasure:
         Calculate mutual information between two neuron groups.
         
         MI(X;Y) = H(X) + H(Y) - H(X,Y)
+        
+        NOTE: x and y are ALREADY binarized by caller
         """
-        # Binarize
-        x_bin = (x > np.median(x)).astype(int)
-        y_bin = (y > np.median(y)).astype(int)
+        # x and y are already binary from _calculate_Phi_geometric
+        # DO NOT binarize again or we lose all variance!
+        x_bin = x.astype(int)
+        y_bin = y.astype(int)
         
         # Individual entropies
         H_x = self._calculate_entropy(x_bin)
@@ -415,8 +568,17 @@ class ConsciousnessMeasure:
         if w_total < 1e-10:
             return 0.0
         
-        # Correlation coefficient
-        corr = np.abs(np.corrcoef(x_bin, y_bin)[0, 1]) if len(x_bin) > 1 and len(y_bin) > 1 else 0
+        # Correlation coefficient (handle different-sized partitions)
+        if len(x_bin) > 1 and len(y_bin) > 1 and len(x_bin) == len(y_bin):
+            corr = np.abs(np.corrcoef(x_bin, y_bin)[0, 1])
+        else:
+            # Different sizes - use weighted connectivity as proxy
+            corr = w_total / (len(x_bin) * len(y_bin) + 1e-10)
+            corr = np.clip(corr, 0, 1)  # Ensure [0,1] range
+        
+        # Handle NaN from corrcoef (can happen with zero variance)
+        if np.isnan(corr):
+            corr = 0.0
         
         # Approximate joint entropy
         H_xy = H_x + H_y - corr * min(H_x, H_y)
@@ -486,7 +648,7 @@ def calculate_avalanche_exponents(activity: np.ndarray) -> Dict[str, float]:
     sizes, durations = zip(*avalanches)
     
     # Fit power laws (use log-log regression)
-    # Size distribution: P(s) ~ s^(-Ï„)
+    # Size distribution: P(s) ~ s^(-tau)
     size_hist, size_bins = np.histogram(sizes, bins=20)
     size_hist = size_hist[size_hist > 0]
     size_bins = size_bins[:len(size_hist)]
@@ -496,7 +658,7 @@ def calculate_avalanche_exponents(activity: np.ndarray) -> Dict[str, float]:
     else:
         tau = np.nan
     
-    # Duration distribution: P(T) ~ T^(-Î±)
+    # Duration distribution: P(T) ~ T^(-alpha)
     dur_hist, dur_bins = np.histogram(durations, bins=15)
     dur_hist = dur_hist[dur_hist > 0]
     dur_bins = dur_bins[:len(dur_hist)]
