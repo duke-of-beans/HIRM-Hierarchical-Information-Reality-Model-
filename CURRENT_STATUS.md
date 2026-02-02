@@ -1,216 +1,165 @@
 # HIRM CURRENT STATUS
-## Research Phase: Grand Unification Transformation
-## Session: 33 (2025-12-22)
-## Last Updated: 2026-01-17
+## Research Phase: Empirical Validation (Stage 3B)
+## Session: 39 (2026-02-01)
+## Last Updated: 2026-02-01
+
+---
+
+## What Actually Happened (Sessions 34-38 Reconstruction)
+
+CURRENT_STATUS.md was frozen at Session 33. The following is reconstructed
+from BUILD_STATUS.md, session summaries, and deliverable files to bring
+this document back to ground truth.
+
+| Session | Focus | Outcome |
+|---------|-------|---------|
+| 33 | Grand unification content mapping | Completed 4 of 8 searches |
+| 34 | (Gap - no summary found) | Unknown |
+| 35 | HIRM 2.0 architecture | Architecture spec created |
+| 36 | Phi bug fixes (Phase 4) | 3 critical bugs fixed in consciousness_measure.py |
+| 37 | Sleep-EDF validation pipeline | Pipeline built (401 lines), dataset downloaded |
+| 38 | Simulation validation | Kuramoto validation COMPLETE; Cambridge dataset identified |
 
 ---
 
 ## Active Work
 
-### Session 33: Deep Corpus Exploration (IN PROGRESS)
+### Empirical Validation - READY TO EXECUTE
+**Status:** Infrastructure complete. Awaiting pipeline execution.
 
-**Status:** Grand unification content mapping phase - 50% complete
+**Sleep-EDF Validation Pipeline:**
+- [DONE] Pipeline code: Empirical/Analysis/sleep_edf_validation.py (401 lines)
+- [DONE] Dataset downloaded: Empirical/Datasets/Sleep_EDF/ (SC4001E0-PSG.edf)
+- [DONE] Protocol documented: Empirical/Protocols/Sleep_EDF_Validation_Protocol.md
+- [DONE] Quickstart guide: Empirical/Analysis/SLEEP_EDF_QUICKSTART.md
+- [TODO] Execute pipeline and interpret results
+- [TODO] Calibrate component values against empirical data
 
-**Searches Completed (4 of 8):**
-- ✅ Many-worlds interpretation and consciousness-driven branching
-- ✅ Holographic principle and dimensional emergence  
-- ✅ IIT/GNW/FEP/HOT consciousness theory integration
-- ✅ Strange loops, Gödel, self-reference formalization
-- ⏳ Simulation hypothesis and "It from Bit"
-- ⏳ Critical brain hypothesis and self-organized criticality
-- ⏳ Ancient wisdom (Ouroboros, Indra's Net, Tao)
-- ⏳ Panpsychism and emergence at threshold
+**Simulation Validation (COMPLETE):**
+- [DONE] Kuramoto oscillator network simulation
+- [DONE] 4 conditions tested: Unconscious, Pre-Conscious, Conscious, Over-Synchronized
+- [PASS] Ordering prediction: C_conscious > C_pre-conscious > C_unconscious
+- [PASS] Non-monotonic relationship: Over-sync collapses C
+- [PASS] Zero-multiplier theorem: multiplicative structure confirmed
+- [FAIL] Absolute calibration: C_conscious = 1.74 bits vs predicted 8.3 bits
+- [NOTE] Absolute calibration requires empirical neural data, not synthetic oscillators
 
-**Major Discoveries:**
-1. **Many-Worlds:** Extensively buried in theoretical.txt - "self-measurement splits reality" vs traditional measurement
-2. **Holographic:** C_critical = 8.3 bits derived DIRECTLY from holographic bounds (black hole analogy)
-3. **Theory Unification:** ALL major theories reduce to constrained optimization variants
-4. **Strange Loops:** R(t) = mathematical formalization of Hofstadter + Gödel incompleteness
-
----
-
-## Manuscript Status
-
-### Paper 1: Brain Criticality and Consciousness Emergence
-- **Current:** 16,100 words
-- **Target:** 18,000 words
-- **Gap:** Need 1,900 words
-- **Missing Sections:**
-  - Clinical protocols (equipment specs, cost-benefit ROI)
-  - Validation studies (multi-center trial designs)
-- **Priority:** HIGH - Submit within 4-6 months
-
-### Paper 2: Quantum-Classical Bridge (SRID Mechanism)
-- **Current:** 9,400 words (78% complete)
-- **Target:** 12,000 words
-- **Gap:** Need 2,600 words
-- **Missing Sections:**
-  - Section 1 (Introduction)
-  - Section 7 (Competing Theories)
-  - Section 8 (Discussion)
-  - Section 9 (Conclusion)
-- **Priority:** MEDIUM - Follow Paper 1 submission
-
-### Paper 3: Information Persistence Through Dimensional Bifurcation
-- **Current:** 10,200 words
-- **Target:** 12,000 words
-- **Status:** ✅ COMPLETE
-- **Priority:** LOW - Ready for review
-
-**Combined Total:** 35,700 / 42,000 words (85% complete)
+**Cambridge High-Density Dataset (IDENTIFIED):**
+- 20 subjects, 91 channels, 4 consciousness states, 3.44 GB
+- Access instructions: Empirical/Datasets/Cambridge_Access_Instructions.md
+- [TODO] Download and validate
 
 ---
 
 ## Computational Status
 
-### Working Tools (12 of 14)
-- ✅ consciousness_measure.py
-- ✅ phase_transition.py
-- ✅ bifurcation_detector.py
-- ✅ rg_implementation.py
-- ✅ statistical_mechanics.py
-- ✅ self_organization.py
-- ✅ neural_network.py
-- ✅ info_geometry.py
-- ✅ validation.py
-- ✅ plots.py
-- ✅ demo_transition.py
-- ✅ quick_demo.py
+### Phi Bug Fixes (Session 36) - ALL RESOLVED
+Three critical bugs were fixed in consciousness_measure.py v2.0:
 
-### Buggy Tools (2 of 14)
-- ❌ **R(t) calculation** → Returns zero instead of expected 0.0-1.0 range
-- ❌ **Φ(t) calculation** → Returns zero instead of expected integrated information
+1. Double binarization in _calculate_mutual_information() - destroyed variance
+2. Erroneous log(2) division in _calculate_Phi_geometric() - MI already in bits
+3. PSI NaN handling - missing negative check before sqrt
 
-**Impact:** Blocks empirical validation until fixed
+Post-fix validation: Phi = 0.198 bits (was 0.0), C = 0.143 bits (was 0.0)
+Geometric method working. Stochastic/PSI methods need separate debugging (not blocking).
 
----
+### R(t) Status
+R_theory computed via transform: R_theory = 1 + 2 * R_obs, range [1, 3]
+Simulation used R = 1.0 baseline (temporal history not passed).
+R calculation for empirical validation needs temporal history integration.
+[WARN] Not blocking pipeline execution but will affect absolute calibration.
 
-## Empirical Validation Pipeline
-
-### Datasets Identified (3)
-1. **Sleep-EDF**
-   - Subjects: 197
-   - Availability: Public
-   - Purpose: Test C_critical threshold across sleep stages
-   - Status: ⏳ Download pending (large files)
-
-2. **VitalDB**
-   - Cases: 5,566
-   - Availability: Public
-   - Purpose: Anesthesia transition dynamics
-   - Status: ⏳ Download pending
-
-3. **Cambridge Propofol Studies**
-   - Availability: Published data
-   - Purpose: Anesthesia LOC mechanisms
-   - Status: ⏳ Data extraction needed
-
-**Blocker:** Cannot proceed with validation until R(t) and Φ(t) bugs fixed
+### Variable Constitution v1.0 (LOCKED)
+Source: Master_Data/Variables/VARIABLE_CONSTITUTION_V1.md
+- Phi(t): Integrated information [0, ~20] bits
+- R_theory(t): Self-referential coupling [1, 3] via R_theory = 1 + 2*R_obs
+- D_eff(t): Dimensional embedding (PCA-based) [0, 1] normalized
+- sigma(t): Branching parameter - tracked separately, NOT in C equation
+- Fixed point: Phi* = 4.82, R* = 1.95, D* = 0.89 -> C* = 8.37 bits
 
 ---
 
-## Next Session Priorities
+## Manuscript Status (Unchanged since Session 33 - no manuscript work in 34-38)
 
-### Critical (Must Do)
-1. Complete Session 33 grand unification searches (4 remaining topics)
-2. Debug R(t) and Φ(t) computational bugs
-3. Expand Paper 1 clinical protocols section (+500 words)
-4. Expand Paper 1 validation studies section (+1,400 words)
+### Paper 1: Brain Criticality and Consciousness Emergence
+- Current: 16,100 words | Target: 18,000 words | Gap: 1,900 words
+- Missing: Clinical protocols, validation studies sections
+- [NOTE] Simulation validation results can fill ~500 words of Methods + Results
+- Priority: HIGH - Submit within 4-6 months
 
-### Important (Should Do)
-5. Paper 2 Section 1 expansion (+600 words)
-6. Paper 2 Sections 7-9 expansion (+2,000 words)
-7. Figure rendering (12 specs created, 0 rendered)
+### Paper 2: Quantum-Classical Bridge (SRID Mechanism)
+- Current: 9,400 words | Target: 12,000 words | Gap: 2,600 words
+- Missing: Sections 1, 7, 8, 9
+- Priority: MEDIUM - Follow Paper 1 submission
 
-### Nice to Have
-8. Sleep-EDF dataset download
-9. Begin component correlation analysis
-10. Create collaboration outreach materials
+### Paper 3: Information Persistence Through Dimensional Bifurcation
+- Current: 10,200 words | Target: 12,000 words
+- Status: COMPLETE
+- Priority: LOW - Ready for review
 
----
-
-## Quality Metrics
-
-### Locked Constants Compliance
-- **C_critical:** ✅ 8.3 ± 0.6 bits (VALID across corpus)
-- **Core equation:** ✅ C(t) = Φ(t) × R(t) × D(t) (CONSISTENT)
-- **Quantum threshold:** ✅ 1-bit (ESTABLISHED)
-
-### Terminology Compliance
-- **HIRM usage:** ✅ 100% (zero "Ouroboros Observer" violations)
-- **Forbidden phrases:** ✅ Clean ("supports hypothesis" not "proves")
-- **Competing theories:** ✅ Properly cited (IIT, GNWT, FEP, HOT, AST, RPT)
-
-### Protocol Version Synchronization
-- **Current version:** v2.3
-- **BUILD_STATUS.md:** ✅ v2.3
-- **START_HERE.md:** ✅ v2.3
-- **PROJECT_DNA.yaml:** ✅ v2.3
-
-### Crash Prevention
-- **ASCII-only compliance:** ✅ 100% (Logs/, Protocols/, Master_Data/, Documentation/)
-- **BUILD_STATUS updates:** ✅ Every 3 tool calls (18 updates in Session 33)
-- **Python execution:** ✅ Syntax check only (no scipy/numpy hangs)
-
-**Overall Health Score:** 100/100 (from orchestrator.py)
+Combined Total: 35,700 / 42,000 words (85% complete)
 
 ---
 
-## Research Corpus Status
+## Locked Constants
 
-### Papers in Database
-- **Total:** 193 papers
-- **By Domain:**
-  - Consciousness theories: 36
-  - Brain criticality: 28
-  - Quantum mechanics: 22
-  - Self-reference: 8 (underrepresented)
-  - Mathematical frameworks: 64
-  - Clinical: 12 (underrepresented)
-  - Empirical: 23
+| Constant | Value | Status |
+|----------|-------|--------|
+| C_critical | 8.3 +/- 0.6 bits | ESTABLISHED |
+| Core equation | C(t) = Phi(t) x R(t) x D(t) | LOCKED |
+| Fixed point | Phi*=4.82, R*=1.95, D*=0.89 | LOCKED |
+| Ising exponents | nu=0.63, gamma=1.24, beta=0.33 | ESTABLISHED |
+| Avalanche exponents | tau=2.0, alpha=1.5 | PROVISIONAL |
 
-### Falsifiable Predictions
-- **Total:** 22 documented
-- **Tested:** 0 (awaiting bug fixes)
-- **Categories:**
-  - Quantum decoherence: 5 predictions
-  - Anesthesia dynamics: 6 predictions
-  - Neural criticality: 7 predictions
-  - Clinical DOC: 4 predictions
+Source of truth: Master_Data/Constants/locked_constants.md
+
+---
+
+## Research Corpus
+
+- Total papers: 193
+- Domains: Consciousness theories (36), Brain criticality (28), Quantum mechanics (22),
+  Self-reference (8), Mathematical frameworks (64), Clinical (12), Empirical (23)
+- Falsifiable predictions: 22 documented, 0 independently tested against HIRM
+- Note: Existing literature findings (anesthesia hysteresis, criticality signatures)
+  are CONSISTENT WITH HIRM but should not be characterized as "confirmed predictions"
+  until tested against HIRM-specific hypotheses
 
 ---
 
 ## Blockers
 
 ### Critical
-1. **R(t) and Φ(t) bugs** → Blocks all empirical validation
-2. **Large dataset downloads** → Requires stable connection (Sleep-EDF, VitalDB)
+1. Sleep-EDF pipeline not yet executed - single highest-value action available
+2. R(t) temporal history not integrated - affects absolute calibration
 
 ### Important
-3. **Figure rendering** → 12 specs created but zero rendered (need visualization pipeline)
-4. **Python debugging environment** → scipy/numpy execution crashes sessions
+3. Manuscript gaps (1,900 + 2,600 words) - blocked on empirical results for Paper 1
+4. Cambridge dataset not downloaded - secondary empirical validation path
 
-### Minor
-5. **Session 33 summary** → Not yet created (will be SESSION_33_SUMMARY.md)
+### Resolved (Sessions 34-38)
+- [RESOLVED] Phi(t) returning zero - FIXED Session 36
+- [RESOLVED] R(t) returning zero - Addressed via Variable Constitution transform
+- [RESOLVED] Sleep-EDF dataset download - COMPLETE Session 37
 
 ---
 
-## Strategic Position
+## Next Priorities (Session 39)
 
-### Transformation Focus
-- Shifting from "HIRM as another theory" → "HIRM as grand unification framework"
-- Positioning: Mathematical synthesis that integrates 40+ concepts
-- Academic strategy: Synthesis framework (not revolutionary) = better acceptance
+### Immediate
+1. Execute Sleep-EDF validation pipeline
+2. Interpret results, calibrate components
+3. Update GitHub with accurate public-facing content
 
-### Publication Timeline
-- **Target:** First submission within 4-6 months
-- **Sequence:** Paper 1 → Paper 2 → Paper 3 (staggered)
-- **Journals:** Nature Physics, Physical Review E, Neuroscience of Consciousness
+### Short-term
+4. Download Cambridge 91-channel dataset
+5. Integrate R(t) temporal history into pipeline
+6. Draft Paper 1 Methods/Results from simulation + empirical data
 
-### Collaboration Potential
-- John Beggs (neural criticality expert)
-- Daniel Toker (anesthesia consciousness researcher)
-- Karl Friston (Free Energy Principle integration)
+### Medium-term
+7. Complete Paper 1 to 18,000 words
+8. Complete Paper 2 missing sections
+9. Collaboration outreach (Beggs, Toker, Friston)
 
 ---
 
@@ -218,36 +167,19 @@
 
 | Session | Date | Focus | Status |
 |---------|------|-------|--------|
-| 33 | 2025-12-22 | Grand unification content mapping | IN PROGRESS |
-| 32 | 2025-12-21 | Paper completion and debugging | COMPLETE |
+| 39 | 2026-02-01 | GitHub audit + status recovery | IN PROGRESS |
+| 38 | 2026-01-18 | Simulation validation | COMPLETE |
+| 37 | 2026-01-18 | Sleep-EDF pipeline | COMPLETE |
+| 36 | 2026-01-18 | Phi bug fixes | COMPLETE |
+| 35 | 2026-01-17 | HIRM 2.0 architecture | COMPLETE |
+| 33 | 2025-12-22 | Grand unification mapping | COMPLETE |
+| 32 | 2025-12-21 | Paper completion | COMPLETE |
 | 31 | 2025-12-21 | Empirical validation prep | COMPLETE |
 | 30 | 2025-12-21 | Research consolidation | COMPLETE |
-| 25 | 2025-12-21 | Cross-domain synthesis | COMPLETE |
 
 ---
 
-## Handoff for Next Session
-
-**Continuation Prompt:**
-```
-Session 34 priorities:
-1. Complete grand unification searches (4 remaining)
-2. Debug R(t)/Φ(t) computational bugs
-3. Expand Paper 1 to 18,000 words (clinical + validation)
-4. Create SESSION_33_SUMMARY.md
-
-Resume from BUILD_STATUS.md Session 33, tool call #18
-```
-
-**Context Files:**
-- Read: PROJECT_DNA.yaml (identity, constants, terminology)
-- Read: BUILD_STATUS.md (crash recovery)
-- Read: This file (CURRENT_STATUS.md)
-- Read: Protocols/HIRM_RESEARCH_PROTOCOLS_v2.3.md (methodology)
-
----
-
-**Last Updated:** 2026-01-17  
-**Next Session:** 34  
-**Phase:** Grand Unification Transformation  
-**Health:** 100/100
+Last Updated: 2026-02-01
+Session: 39
+Phase: Empirical Validation (Stage 3B)
+Health: Recovering - status files were 5 sessions out of date

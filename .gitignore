@@ -1,29 +1,67 @@
-# Backups - keep local only
-_Backups/
+# HIRM GitHub Curation Rules
+# ============================================================
+# GITHUB = Open academic layer. Theory, papers, methodology,
+#          code, results. Inviting scrutiny and collaboration.
+# LOCAL ONLY = Internal ops. Session management, crash recovery,
+#              automation scripts, deprecated archives.
+# ============================================================
 
-# Temporary files
-Temp/
-*.tmp
-*.temp
-~$*
+# --- INTERNAL OPERATIONS (local only) ---
+Logs/
+System/
+Protocols/AUTOMATION_BUILD_PROMPT.md
+Protocols/CRASH_PREVENTION_PROTOCOL.md
+Protocols/CROSS_LLM_SYNTHESIS_PROTOCOL.md
+Protocols/MASTER_CORPUS_SYNTHESIS_PROMPT.md
+Protocols/MASTER_SYNTHESIS_ENGINE_v2.md
+Protocols/PROJECT_INSTRUCTION_AMENDMENT.md
+Protocols/SYSTEM_AUDIT_PROMPT.md
+Documentation/CONTINUATION_PROMPTS.md
+Documentation/CRASH_RECOVERY_PROTOCOL.md
+Documentation/EXECUTION_PLAN_SESSION_30.md
+Documentation/NEXT_SESSION_HANDOFF.md
+Documentation/SESSION_SUMMARY_TEMPLATE.md
+Documentation/START_HERE.md
+Documentation/QUICKSTART.md
+Documentation/QUICK_REFERENCE_v2.md
+Documentation/INDEX.md
 
-# System files
-.DS_Store
-Thumbs.db
-desktop.ini
+# --- DEPRECATED / ARCHIVE (local only) ---
+_Archive/
+Ouroboros Observer.zip
 
-# Large binary files (optional - uncomment if needed)
-# *.zip
-# *.pdf
+# --- ROOT CRUFT (local only) ---
+HIRM_INSTRUCTIONS_PROJECT.md
+HANDOFF_SESSION_37.md
+SESSION_37_EXECUTIVE_SUMMARY.md
+llm-synthesis1.md
+llm-synthesis2.txt
+llm-synthesis3.md
 
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
-.pytest_cache/
+# --- REDUNDANT ROOT DOCX (kept in docs/ on GitHub) ---
+HIRM_Bibliography.docx
+HIRM_Falsifiable_Predictions.docx
+HIRM_Framework_Overview.docx
+HIRM_Ouroboros_Observer_Popular_Guide.docx
 
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
+# --- LARGE BINARY DATA (too big, not reproducible output) ---
+Empirical/Datasets/Sleep_EDF/*.edf
+Empirical/Simulation/simulation_results.pkl
+System/data/hirm.db
+
+# --- OLD EXPERIMENT FOLDER ---
+E/
+
+# --- WORK-IN-PROGRESS FIGURES ---
+Figures/Working/
+Figures/SESSION_25_NEW_FIGURE_SPECS.md
+
+# --- INTERNAL DEMOS / TESTS (keep Core code, skip internal test scaffolding) ---
+Code/Demos/
+Code/Tests/
+Code/Visualizations/
+Code/Core/__init__.py
+Code/__init__.py
+
+# --- INTERNAL PROTOCOL DRAFTS (keep research methodology, skip workflow ops) ---
+Protocols/EXPERIMENTAL_PROTOCOLS_SESSION24.md

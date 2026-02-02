@@ -13,25 +13,24 @@ identity:
 
 current_state:
   version: "2.3"  # Protocol version
-  phase: "Grand Unification Transformation"
-  session_number: 33
-  last_updated: "2025-12-22"
+  phase: "Empirical Validation (Stage 3B)"
+  session_number: 39
+  last_updated: "2026-02-01"
   papers_in_corpus: 193
-  health_score: "100/100"  # From orchestrator.py
-  last_major_milestone: "Deep corpus exploration complete - Grand unification content mapped"
+  health_score: "Recovering - status files were 5 sessions out of date, now corrected"
+  last_major_milestone: "Simulation validation complete (Session 38), Sleep-EDF pipeline ready to execute"
 
 research_priorities:
   critical:
-    - "Complete grand unification transformation (reframe corpus as synthesis framework)"
-    - "Sleep-EDF empirical validation (test C_critical = 8.3 ± 0.6 prediction)"
-    - "Component correlation analysis (validate Φ × R × D independence)"
-    - "Anesthesia hysteresis quantification (test bistability prediction)"
+    - "Execute Sleep-EDF validation pipeline (infrastructure ready, dataset downloaded)"
+    - "Download Cambridge 91-channel dataset (20 subjects, 4 states, secondary validation)"
+    - "Integrate R(t) temporal history into empirical pipeline"
+    - "Update GitHub with accurate public-facing content"
   
   active:
-    - "Three-paper manuscript completion (40,200 words target)"
-    - "Paper 1 expansion to 18,000 words (clinical protocols + validation studies)"
-    - "Computational debugging (R(t) and Φ(t) zero-value fixes)"
-    - "Figure rendering (12 specifications created, 0 rendered)"
+    - "Paper 1 expansion to 18,000 words (simulation results + empirical data fills ~500 words)"
+    - "Paper 2 missing sections (1, 7, 8, 9 = 2,600 words)"
+    - "Calibrate absolute C values against empirical neural data"
   
   backlog:
     - "Clinical protocol development (real-time consciousness monitoring)"
@@ -57,8 +56,9 @@ locked_constants:
     
     R_t:
       name: "Self-Reference Coefficient"
-      units: "dimensionless (0-1)"
+      units: "dimensionless [1, 3] via R_theory = 1 + 2*R_obs"
       mechanism: "Strange loops (Hofstadter), Gödel incompleteness"
+      note: "R_obs is observed [0,1], R_theory transforms to [1,3] for equation"
     
     D_t:
       name: "Dimensional Complexity"
@@ -157,28 +157,45 @@ empirical_validation:
       subjects: 197
       availability: "Public"
       purpose: "Test C(t) threshold across sleep stages"
+      status: "Pipeline READY, 1 subject downloaded, NOT YET EXECUTED"
+    
+    - name: "Cambridge Propofol Studies"
+      subjects: 20
+      channels: 91
+      states: 4
+      size_gb: 3.44
+      availability: "Identified, access instructions written"
+      purpose: "High-density validation across consciousness states"
+      status: "Access instructions ready, download pending"
     
     - name: "VitalDB"
       cases: 5566
       availability: "Public"
       purpose: "Anesthesia transition dynamics, hysteresis quantification"
-    
-    - name: "Cambridge Propofol Studies"
-      availability: "Published data"
-      purpose: "Anesthesia-induced LOC mechanisms"
+      status: "Not yet prioritized"
+  
+  simulation_validation:
+    status: "QUALITATIVE PASS - Session 38"
+    method: "Kuramoto oscillator network, 4 conditions"
+    ordering_prediction: "PASS - C_conscious > C_pre > C_unconscious"
+    non_monotonic: "PASS - Over-sync collapses C"
+    zero_multiplier: "PASS - Multiplicative structure confirmed"
+    absolute_calibration: "FAIL - C_conscious = 1.74 bits vs 8.3 predicted (requires empirical data)"
   
   computational_tools:
-    created: 14
-    buggy: 2  # R(t) and Φ(t) return zero
-    status: "Debugging in progress"
+    total: 14
+    working: 14  # Phi bugs fixed Session 36
+    known_issues: "R(t) temporal history not passed in simulation; stochastic/PSI Phi methods need separate debugging"
   
   falsifiable_predictions:
     count: 22
+    independently_tested: 0
     categories:
       - "Quantum decoherence signatures"
       - "Anesthesia transition dynamics"
       - "Neural criticality markers"
       - "Clinical applications (DOC stratification)"
+    note: "Existing literature findings are CONSISTENT WITH but not confirmations OF HIRM predictions"
 
 publication_strategy:
   target_journals:
@@ -295,5 +312,5 @@ research_milestone:
 created: "2026-01-17"
 created_by: "Claude (Sonnet 4.5)"
 version: "1.0"
-last_modified: "2026-01-17"
+last_modified: "2026-02-01"
 status: "ACTIVE"
