@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "slug": "hirm",
+  "name": "HIRM",
+  "brain_entity_id": "01KMWEC413AE61DG5TAAPREXWH",
+  "type": "research",
+  "owner": "personal",
+  "environment": "research",
+  "display_register": "pleasure",
+  "tier": 3,
+  "description": "HIRM (Hierarchical Information-Reality Model) is David's original consciousness research framework. Mathematical model: C(t) = Phi(t) × R(t) × D(t), with C_critical = 8.3 ± 0.6 bits. Unifies IIT, GNWT, FEP, HOT, and AST theories.",
+  "purpose": "Develop and validate a mathematically rigorous, falsifiable framework for consciousness emergence through self-reference phase transitions at criticality.",
+  "success_criteria": [
+    "Sleep-EDF empirical validation pipeline executed",
+    "Paper 1 submitted to tier-1 journal",
+    "C_critical calibrated against empirical neural data"
+  ],
+  "upstream": [],
+  "downstream": [],
+  "peers": [],
+  "repo": null,
+  "local_url": null,
+  "vercel_url": null,
+  "tech_stack": [
+    "Python",
+    "scipy",
+    "numpy"
+  ],
+  "language": "Python",
+  "tagline": "Mathematical consciousness framework. C(t) = Phi × R × D.",
+  "philosophy": [],
+  "notes": "Protocol v2.3. Session 39+. 193 papers in corpus. Simulation validation: qualitative pass. Locked constants: C_critical = 8.3 ± 0.6 bits, universality class 3D Ising.",
+  "key_decisions": [],
+  "created_date": "2026-03-31",
+  "last_updated": "2026-03-31",
+  "author": "dk-001"
+}

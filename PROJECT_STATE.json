@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "slug": "hirm",
+  "brain_entity_id": "01KMWEC413AE61DG5TAAPREXWH",
+  "status": "active",
+  "phase": "Empirical Validation (Stage 3B)",
+  "version": "2.3",
+  "completion_pct": 55,
+  "last_session": "2026-03-31",
+  "last_updated": "2026-03-31",
+  "blockers": [],
+  "next_action": "Execute Sleep-EDF validation pipeline (infrastructure ready, dataset downloaded)",
+  "open_tasks": [
+    {
+      "id": "HIRM-EDF-01",
+      "priority": "p0",
+      "text": "Execute Sleep-EDF validation pipeline — 197 subjects, infrastructure ready"
+    },
+    {
+      "id": "HIRM-CAMBRIDGE-01",
+      "priority": "p1",
+      "text": "Download Cambridge 91-channel dataset (20 subjects, 4 states)"
+    },
+    {
+      "id": "HIRM-PAPER1-01",
+      "priority": "p1",
+      "text": "Expand Paper 1 to 18,000 words (needs ~1,900 more words)"
+    }
+  ],
+  "quality": {
+    "test_count": null,
+    "tests_passing": null,
+    "tsc_errors": null,
+    "eos_health": null,
+    "last_scan": null
+  },
+  "signals": {
+    "vercel_url": null,
+    "last_deploy": null,
+    "last_deploy_status": null,
+    "last_commit": null,
+    "last_commit_message": null,
+    "last_commit_date": null,
+    "anthropic_credits_ok": null,
+    "domain_active": null
+  },
+  "metrics": {},
+  "changelog": [
+    {
+      "date": "2026-03-31",
+      "version": "2.3",
+      "sprint": "META-INFRA-DNA-SEED",
+      "summary": "Initial PROJECT_STATE.json created from PRODUCT_GRAPH.yaml and session context during META-INFRA DNA schema migration.",
+      "shipped": [
+        "PROJECT_STATE.json created",
+        "PROJECT_DNA.json created"
+      ]
+    }
+  ],
+  "open_questions": [],
+  "integrations": []
+}
