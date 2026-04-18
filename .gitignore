@@ -1,5 +1,12 @@
 node_modules/
 .DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.pkl
+*.db
+*.db-shm
+*.db-wal
 
 # Session artifacts
 PROJECT_DNA.json
@@ -20,8 +27,9 @@ llm-synthesis2.txt
 llm-synthesis3.md
 FOUNDERS_STORY.md
 
-# Runtime
+# Runtime / large files
 Logs/
 _Archive/
 _Backups/
 Ouroboros Observer.zip
+Empirical/Datasets/Sleep_EDF/*.edf
