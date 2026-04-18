@@ -1,5 +1,5 @@
 """
-Setup configuration for the HIRM (Hierarchical Information-Reality Model) package.
+Setup configuration for the Ouroboros Observer package.
 """
 
 from setuptools import setup, find_packages
@@ -10,10 +10,10 @@ with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='hirm',
-    version='0.2.0',
-    author='HIRM Research Team',
-    author_email='research@hirm-consciousness.org',
+    name='ouroboros-observer',
+    version='0.1.0',
+    author='Ouroboros Observer Research Team',
+    author_email='research@ouroboros-observer.org',
     description='Computational toolkit for consciousness phase transitions at critical brain dynamics',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -55,7 +55,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'hirm-validate=hirm.validation:main',
+            'ouroboros-validate=ouroboros_observer.validation:main',
         ],
     },
     include_package_data=True,

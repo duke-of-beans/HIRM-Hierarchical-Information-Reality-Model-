@@ -1,7 +1,11 @@
-# HIRM CURRENT STATUS
-## Research Phase: Empirical Validation (Stage 3B)
-## Session: 39 (2026-02-01)
-## Last Updated: 2026-02-01
+# HIRM — STATUS
+
+**Status:** active
+**Phase:** Stage 3B — Empirical validation — Sleep-EDF pipeline ready
+**Last Sprint:** Session 39
+**Last Updated:** 2026-02-01
+
+---
 
 ---
 
@@ -183,3 +187,55 @@ Last Updated: 2026-02-01
 Session: 39
 Phase: Empirical Validation (Stage 3B)
 Health: Recovering - status files were 5 sessions out of date
+
+---
+
+## Integration Score — Applied Engineering Extension (March 14, 2026)
+
+The Integration Score (IS) is the applied engineering adaptation of HIRM's C(t) equation,
+developed March 14, 2026 during a portfolio alignment session. IS strips the consciousness
+claim and applies the mathematical structure as a practical AI system quality and routing metric.
+
+**Formula:** IS(t) = Φ(t) × R(t) × D(t) — normalized [0, 1]  
+**Canonical spec:** `D:\Dev\INTEGRATION_SCORE_SPEC.md`
+
+### Distinction from C(t)
+
+| | HIRM C(t) | Integration Score IS(t) |
+|--|----------|------------------------|
+| Units | Bits (C_critical = 8.3 ± 0.6) | Normalized [0, 1] |
+| Claim | Consciousness measurement | Engineering quality signal |
+| Φ source | Neural integrated information | Cross-subsystem signal pathways |
+| R source | Temporal autocorrelation structure | Self-model accuracy + utilization |
+| D source | PCA dimensional embedding | Active cognitive dimensions / available |
+| Validation | Sleep-EDF empirical neural data | System performance logs |
+
+### Status
+
+IS is being adopted across the portfolio (Gregore, GregLite, Consensus, DAI/Thalamic) as a
+standard routing quality signal. HIRM remains the foundational research. The adoption of IS
+by production systems validates the mathematical structure's practical applicability, and
+those production implementations may produce comparative data useful for HIRM's own empirical
+validation work once Sleep-EDF pipeline execution is complete.
+
+### Next HIRM Action
+
+The relationship between IS routing bands (0.2, 0.4, 0.7) and HIRM's C_critical (8.3 bits)
+is an open empirical question. Once the Sleep-EDF pipeline executes and C(t) values are
+calibrated against known Wake/N3 states, it may be possible to derive a principled normalization
+function mapping C(t) → IS(t). That would make IS a calibrated instrument, not just a
+proportional proxy. This is a medium-term research opportunity.
+
+
+---
+
+## Open Backlog (aggregator-compatible)
+
+- [ ] Execute Sleep-EDF validation pipeline (Empirical/Analysis/sleep_edf_validation.py)
+- [ ] Download Cambridge high-density dataset (20 subjects, 91ch, 4 consciousness states, 3.44 GB)
+- [ ] Paper 1: Write clinical protocols section (~700 words)
+- [ ] Paper 1: Write validation studies section (~1,200 words) — total gap: 1,900 words to target
+- [ ] Absolute calibration: run empirical neural data through pipeline to close C_conscious gap (1.74 vs 8.3 bits predicted)
+- [ ] Debug stochastic/PSI methods (not blocking pipeline but incomplete)
+- [ ] Integrate temporal history into R(t) calculation for empirical validation run
+- [ ] Map HIRM C(t) → IS(t) normalization function once Sleep-EDF pipeline executes
