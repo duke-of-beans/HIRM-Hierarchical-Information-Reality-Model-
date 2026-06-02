@@ -39,7 +39,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Add HIRM code to path
-sys.path.insert(0, 'D:/Research/HIRM/Code/Core')
+sys.path.insert(0, 'D:/Projects/HIRM/Code/Core')
 
 # Import HIRM consciousness measure (Variable Constitution v1.0)
 from consciousness_measure import ConsciousnessMeasure
@@ -106,9 +106,9 @@ def load_sleep_edf_file(edf_path, hypnogram_path):
     
     n_channels, n_samples = eeg_data.shape
     
-    print(f"[OK] Neural data loaded: {n_channels} channels × {n_samples} samples at {sfreq} Hz")
+    print(f"[OK] Neural data loaded: {n_channels} channels x {n_samples} samples at {sfreq} Hz")
     print(f"[OK] Channels: {eeg_channels}")
-    print(f"[OK] N={n_channels} ensures non-degenerate Phi calculation (geometric method requires N≥3)")
+    print(f"[OK] N={n_channels} ensures non-degenerate Phi calculation (geometric method requires N>=3)")
     print(f"[OK] Duration: {n_samples/sfreq/60:.1f} minutes")
     
     # Load sleep stage annotations
@@ -337,12 +337,13 @@ def run_sleep_validation(edf_path, hypnogram_path, output_dir='Results'):
     # 4. Initialize consciousness measure
     print("\n[WIP] Initializing consciousness measure calculator...")
     cm = ConsciousnessMeasure(
-        Phi_method='PSI',  # PSI method for low-dimensional systems (N=3)
+        Phi_method='LZC',  # LZC: Lempel-Ziv Complexity (Round 3 recalibration)
         temporal_window=int(CONFIG['epoch_duration'] * sfreq),
         D_max=1.5,  # CALIBRATED from empirical data
-        Phi_scale=10.0  # CALIBRATED scaling factor
+        Phi_scale=10.0,  # CALIBRATED scaling factor
+        sfreq=sfreq  # Needed for spectral entropy D_eff
     )
-    print("[OK] Calculator ready (Variable Constitution v1.0 - PSI method for N=3)")
+    print("[OK] Calculator ready (Variable Constitution v1.0 - LZC Phi + Recurrence R + Spectral D)")
     
     # 5. Calculate C(t) for each epoch
     print(f"\n[WIP] Calculating C(t) for {len(epochs)} epochs...")
@@ -455,8 +456,9 @@ def test_threshold_prediction(results_df):
     C_crit = CONFIG['C_critical']
     
     # Define conscious vs unconscious states
-    conscious_states = ['W', 'Wake', 'REM', 'R']  # Possible labels
-    unconscious_states = ['N2', 'N3', 'S2', 'S3', 'S4']
+    # Sleep-EDF labels: 'Sleep stage W', 'Sleep stage R', 'Sleep stage 1', etc.
+    conscious_states = ['Sleep stage W', 'Sleep stage R']
+    unconscious_states = ['Sleep stage 2', 'Sleep stage 3', 'Sleep stage 4']
     
     # Filter data
     conscious_mask = results_df['stage'].isin(conscious_states)
@@ -466,21 +468,21 @@ def test_threshold_prediction(results_df):
     C_unconscious = results_df.loc[unconscious_mask, 'C']
     
     print(f"Conscious states (Wake/REM): n = {len(C_conscious)}")
-    print(f"  Mean C = {C_conscious.mean():.3f} ± {C_conscious.std():.3f} bits")
+    print(f"  Mean C = {C_conscious.mean():.3f} +/- {C_conscious.std():.3f} bits")
     print(f"  Predicted: > {C_crit} bits")
-    print(f"  Result: {'✓ PASS' if C_conscious.mean() > C_crit else '✗ FAIL'}\n")
+    print(f"  Result: {'PASS' if C_conscious.mean() > C_crit else 'FAIL'}\n")
     
     print(f"Unconscious states (N2/N3): n = {len(C_unconscious)}")
-    print(f"  Mean C = {C_unconscious.mean():.3f} ± {C_unconscious.std():.3f} bits")
+    print(f"  Mean C = {C_unconscious.mean():.3f} +/- {C_unconscious.std():.3f} bits")
     print(f"  Predicted: < {C_crit} bits")
-    print(f"  Result: {'✓ PASS' if C_unconscious.mean() < C_crit else '✗ FAIL'}\n")
+    print(f"  Result: {'PASS' if C_unconscious.mean() < C_crit else 'FAIL'}\n")
     
     # T-test
     try:
         from scipy.stats import ttest_ind
         t_stat, p_value = ttest_ind(C_conscious, C_unconscious)
         print(f"T-test: t = {t_stat:.3f}, p = {p_value:.3e}")
-        print(f"Result: {'✓ SIGNIFICANT' if p_value < 0.05 else '✗ NOT SIGNIFICANT'}")
+        print(f"Result: {'SIGNIFICANT' if p_value < 0.05 else 'NOT SIGNIFICANT'}")
     except ImportError:
         print("[WARN] scipy not available for t-test")
     

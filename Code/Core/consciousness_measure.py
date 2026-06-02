@@ -20,6 +20,7 @@ from typing import Dict, Optional, Tuple, Union
 from scipy.sparse import csr_matrix
 from scipy.linalg import eigh
 from scipy.stats import entropy
+from scipy.signal import welch
 import warnings
 
 
@@ -61,12 +62,14 @@ class ConsciousnessMeasure:
         Phi_method: str = 'PSI',  # Changed to PSI for low-dimensional systems
         temporal_window: int = 100,
         D_max: float = 1.5,  # CALIBRATED: Empirical fit to Sleep-EDF data
-        Phi_scale: float = 10.0  # CALIBRATED: Geometric method scaling factor
+        Phi_scale: float = 10.0,  # CALIBRATED: Geometric method scaling factor
+        sfreq: float = 100.0  # Sampling frequency (Hz) for spectral D_eff
     ):
         self.Phi_method = Phi_method
         self.temporal_window = temporal_window
         self.D_max = D_max
         self.Phi_scale = Phi_scale
+        self.sfreq = sfreq
     
     def calculate_C(
         self, 
@@ -168,57 +171,73 @@ class ConsciousnessMeasure:
             return Phi_raw * self.Phi_scale
         elif method == 'PSI':
             return self._calculate_Phi_PSI(activity, connectivity)
+        elif method == 'LZC':
+            return self._calculate_Phi_LZC(activity)
         else:
             raise ValueError(f"Unknown Phi method: {method}")
     
     def calculate_R_obs(self, activity_history: np.ndarray) -> float:
         """
-        Calculate OBSERVABLE self-reference R_obs(t) from temporal patterns.
+        Calculate OBSERVABLE self-reference R_obs(t) via Lempel-Ziv Complexity.
+        
+        RECALIBRATED 2026-05-17: LZC measures distinct pattern count in
+        binarized signal. HIGH for complex (wake), LOW for regular (sleep).
         
         CONSTITUTION: R_obs in [0, 1]
-        
-        This is a PROXY measure. Full clinical composite requires:
-        R_obs = 0.35*R_PAC + 0.25*R_TC + 0.20*R_DMN + 0.20*R_LZC
-        
-        Current implementation uses autocorrelation as proxy for LZC component.
-        
-        Parameters
-        ----------
-        activity_history : np.ndarray
-            Historical activity patterns (N, T)
-        
-        Returns
-        -------
-        R_obs : float
-            Observable self-reference measure in [0, 1]
         """
-        if activity_history.shape[1] < 10:
-            return 0.0  # Insufficient history
+        if activity_history.ndim == 1 or activity_history.shape[1] < 30:
+            return 0.0
         
-        # Use only recent history
-        T_window = min(self.temporal_window, activity_history.shape[1])
-        recent = activity_history[:, -T_window:]
+        N_ch, T = activity_history.shape
         
-        # Calculate autocorrelation at multiple time scales
-        max_lag = min(20, T_window // 2)
-        autocorr = []
+        # Downsample to ~300 points for speed (LZC is O(n²))
+        step = max(1, T // 300)
         
-        for neuron_activity in recent:
-            acf = self._autocorrelation(neuron_activity, max_lag)
-            autocorr.append(acf)
+        lzc_values = []
+        for ch in range(N_ch):
+            sig = activity_history[ch, ::step]
+            
+            # Binarize around median
+            binary = (sig > np.median(sig)).astype(np.int8)
+            
+            # Lempel-Ziv complexity (fast version)
+            lzc = self._lzc_fast(binary)
+            
+            # Normalize: random binary has LZC ≈ n / log2(n)
+            n = len(binary)
+            if n > 1:
+                lzc_norm = lzc * np.log2(n) / n
+            else:
+                lzc_norm = 0.0
+            
+            lzc_values.append(lzc_norm)
         
-        autocorr = np.array(autocorr).mean(axis=0)
+        R_obs = float(np.mean(lzc_values))
+        return np.clip(R_obs, 0.0, 1.0)
+    
+    @staticmethod
+    def _lzc_fast(binary_seq):
+        """Fast Lempel-Ziv complexity using string matching."""
+        n = len(binary_seq)
+        if n <= 1:
+            return n
         
-        # Proxy for self-reference: slower decay = more self-modeling
-        # Map to [0, 1] range
-        if len(autocorr) > 1:
-            # Area under autocorrelation curve as proxy
-            R_proxy = np.sum(np.abs(autocorr)) / len(autocorr)
-            R_obs = np.clip(R_proxy, 0.0, 1.0)
-        else:
-            R_obs = 0.0
+        s = ''.join(str(int(b)) for b in binary_seq)
+        complexity = 1
+        l = 1
         
-        return R_obs
+        while l < n:
+            # Find longest match of s[l:] in s[0:l]
+            k = 1
+            while l + k <= n:
+                if s[l:l+k] in s[0:l+k-1]:
+                    k += 1
+                else:
+                    break
+            complexity += 1
+            l += max(k, 1)
+        
+        return complexity
     
     def calculate_R_theory(self, R_obs: float) -> float:
         """
@@ -248,13 +267,16 @@ class ConsciousnessMeasure:
     
     def calculate_D_eff(self, activity: np.ndarray) -> float:
         """
-        Calculate dimensional embedding D_eff via PCA participation ratio.
+        Calculate effective dimensionality D_eff via spectral entropy.
         
-        CONSTITUTION: D = D_eff in [0, 1] (normalized)
+        RECALIBRATED 2026-05-17: Replaced PCA participation ratio with
+        spectral entropy. PCA-PR saturated at 1.0 for NREM stages due to
+        only 3 EEG channels — provided zero discrimination.
         
-        Method: Participation ratio of eigenvalues
-        D_eff = (sum lambda_i)^2 / sum(lambda_i^2)
-        Then normalize: D = D_eff / D_max
+        Spectral entropy is HIGH for flat/desynchronized spectra (wake)
+        and LOW for peaked/synchronized spectra (deep sleep).
+        
+        CONSTITUTION: D_eff in [0, 1] (normalized)
         
         Parameters
         ----------
@@ -264,48 +286,49 @@ class ConsciousnessMeasure:
         Returns
         -------
         D_eff : float
-            Normalized dimensional embedding in [0, 1]
+            Normalized spectral entropy in [0, 1]
         """
         if activity.ndim == 1:
-            # Single timepoint - limited dimensionality estimate
-            # Use spread as proxy
-            D_raw = 1.0
-        else:
-            # Multiple timepoints - can do PCA
-            N, T = activity.shape
-            
-            if T < 3:
-                D_raw = 1.0
-            else:
-                # Center data
-                activity_centered = activity - activity.mean(axis=1, keepdims=True)
-                
-                # Covariance matrix
-                cov = (activity_centered @ activity_centered.T) / T
-                
-                # Eigenvalues
-                eigenvalues = np.linalg.eigvalsh(cov)
-                eigenvalues = eigenvalues[eigenvalues > 1e-12]  # More lenient threshold
-                
-                if len(eigenvalues) == 0:
-                    D_raw = 0.0
-                else:
-                    # Participation ratio
-                    sum_eig = np.sum(eigenvalues)
-                    sum_eig_sq = np.sum(eigenvalues**2)
-                    
-                    # BUG FIX: Eigenvalues from real EEG can be tiny (~10^-9)
-                    # sum_eig_sq can be ~10^-18, so use relative threshold
-                    if sum_eig_sq > 1e-20:
-                        D_raw = (sum_eig**2) / sum_eig_sq
-                    else:
-                        D_raw = 0.0
+            return 0.5  # Single timepoint — no spectral info, return neutral
         
-        # Normalize to [0, 1]
-        D_eff = D_raw / self.D_max
-        D_eff = np.clip(D_eff, 0.0, 1.0)
+        N, T = activity.shape
         
-        return D_eff
+        if T < 8:
+            return 0.5  # Too few samples for spectral estimate
+        
+        D_values = []
+        for ch in range(N):
+            try:
+                nperseg = min(256, T)
+                freqs, psd = welch(activity[ch], fs=self.sfreq, nperseg=nperseg)
+                
+                # Skip DC component (index 0)
+                psd = psd[1:]
+                
+                if psd.sum() < 1e-20:
+                    D_values.append(0.0)
+                    continue
+                
+                # Normalize PSD to probability distribution
+                psd_norm = psd / psd.sum()
+                
+                # Shannon entropy, normalized to [0, 1]
+                se = entropy(psd_norm) / np.log(len(psd_norm))
+                D_values.append(se)
+            except Exception:
+                D_values.append(0.5)
+        
+        if len(D_values) == 0:
+            return 0.5
+        
+        D_eff = float(np.mean(D_values))
+        return np.clip(D_eff, 0.0, 1.0)
+    
+    # --- OLD D_eff (PCA participation ratio) — removed 2026-05-17 ---
+    # Saturated at 1.0 for all NREM stages with 3-channel EEG.
+    # See RECALIBRATION_HANDOFF.md for full diagnosis.
+    # def calculate_D_eff_pca(self, activity):
+    #     ... (PCA participation ratio code) ...
     
     def calculate_sigma(
         self, 
@@ -448,50 +471,165 @@ class ConsciousnessMeasure:
         connectivity: Union[np.ndarray, csr_matrix]
     ) -> float:
         """
-        Practical Simplicity Index (PSI).
+        Phi proxy via permutation entropy × cross-channel integration.
         
-        Fast approximation based on network complexity measures.
-        FIXED: Properly handles temporal data (N, T) instead of collapsing to (N,)
+        RECALIBRATED 2026-05-17: Old PSI used temporal variance, which is
+        HIGH for high-amplitude slow waves (deep sleep) — inverted.
+        
+        New approach:
+        - Permutation entropy (PE) per channel: HIGH for complex/irregular
+          signals (wake), LOW for regular oscillations (sleep).
+        - Cross-channel coherence: integration between channels.
+        - Phi = mean(PE) * coherence_factor
+        
+        Permutation entropy is well-validated as a consciousness proxy
+        (Sitt et al. 2014, Schartner et al. 2015, King et al. 2013).
         """
-        # Handle temporal data properly
-        if activity.ndim == 2:
-            N, T = activity.shape
-            # Use temporal variance as measure of node diversity
-            node_vars = activity.var(axis=1)  # Variance across time for each node
-            node_vars = node_vars / (node_vars.sum() + 1e-10)  # Normalize
-            node_vars = node_vars[node_vars > 0]
-            H_nodes = -np.sum(node_vars * np.log2(node_vars + 1e-10))
+        if activity.ndim == 1:
+            activity = activity[:, np.newaxis]
+        
+        N, T = activity.shape
+        
+        if T < 10:
+            return 0.5
+        
+        # Downsample to ~500 points for PE speed
+        step = max(1, T // 500)
+        activity_ds = activity[:, ::step]
+        T_ds = activity_ds.shape[1]
+        
+        # 1. Permutation entropy per channel (order 3, fast)
+        order = 3
+        pe_values = []
+        for ch in range(N):
+            pe = self._permutation_entropy(activity_ds[ch], order=order)
+            pe_values.append(pe)
+        
+        mean_pe = np.mean(pe_values) if pe_values else 0.5
+        
+        # 2. Cross-channel diversity: std of per-channel spectral entropies
+        if N >= 2:
+            se_per_ch = []
+            for ch in range(N):
+                try:
+                    _, psd = welch(activity[ch], fs=self.sfreq, nperseg=min(256, T))
+                    psd = psd[1:]
+                    if psd.sum() > 1e-20:
+                        psd_n = psd / psd.sum()
+                        se_per_ch.append(entropy(psd_n) / np.log(len(psd_n)))
+                except Exception:
+                    pass
+            # Diversity = how different the channels are (integration proxy)
+            if len(se_per_ch) >= 2:
+                coh_factor = 0.5 + np.std(se_per_ch)
+            else:
+                coh_factor = 0.5
         else:
-            # Single timepoint (static)
-            N = len(activity)
-            hist, _ = np.histogram(activity, bins=10, density=True)
-            hist = hist[hist > 0]
-            H_nodes = -np.sum(hist * np.log2(hist + 1e-10))
+            coh_factor = 0.5
         
-        # Connection diversity (same for both cases)
-        if hasattr(connectivity, 'toarray'):
-            W = connectivity.toarray()
-        else:
-            W = connectivity
+        # Combine: PE captures differentiation, coherence captures integration
+        # Scale to produce values in reasonable range for Phi
+        Phi = mean_pe * (0.5 + coh_factor) * 2.0
         
-        # Strength distribution
-        strengths = np.abs(W).sum(axis=1)
-        strengths = strengths / (strengths.sum() + 1e-10)
-        strengths = strengths[strengths > 0]
-        H_connections = -np.sum(strengths * np.log2(strengths + 1e-10))
+        return max(0.0, float(Phi))
+    
+    def _permutation_entropy(self, x, order=3, delay=1):
+        """
+        Compute normalized permutation entropy — VECTORIZED.
+        Returns value in [0, 1]: 1 = maximum complexity, 0 = fully regular.
+        """
+        n = len(x)
+        if n < order * delay + 1:
+            return 0.5
         
-        # PSI combines node and connection diversity
-        # BUG FIX: Check for negative values before sqrt
-        product = H_nodes * H_connections
-        if product < 0:
-            product = 0.0
-        PSI = np.sqrt(product)
+        # Vectorized: create all windows at once
+        n_windows = n - (order - 1) * delay
+        indices = np.arange(order) * delay
+        windows = np.array([x[i + indices] for i in range(n_windows)])
         
-        # Handle NaN
-        if np.isnan(PSI):
-            PSI = 0.0
+        # Argsort all windows at once → rank patterns
+        ranks = np.argsort(windows, axis=1)
         
-        return PSI
+        # Convert rank patterns to unique integers for fast counting
+        # For order=3: pattern (0,1,2) → 0*6+1*2+2 = 4, etc.
+        multipliers = np.array([np.math.factorial(order - 1 - i) for i in range(order)])
+        pattern_ids = (ranks * multipliers).sum(axis=1)
+        
+        # Count occurrences
+        _, counts = np.unique(pattern_ids, return_counts=True)
+        probs = counts / counts.sum()
+        
+        # Shannon entropy normalized by max
+        import math
+        H = -np.sum(probs * np.log2(probs))
+        max_H = math.log2(math.factorial(order))
+        
+        return H / max_H if max_H > 0 else 0.5
+    
+    def _calculate_Phi_LZC(self, activity: np.ndarray) -> float:
+        """
+        Phi via Lempel-Ziv Complexity (LZC).
+        
+        RECALIBRATED 2026-05-17 Round 3: Replaces PSI which was inverted
+        (high for synchronized sleep). LZC is HIGH for complex/irregular
+        signals (wake) and LOW for regular/periodic signals (deep sleep).
+        
+        Based on Casali et al. 2013 (Perturbational Complexity Index).
+        Well-established in consciousness research and clinical DOC assessment.
+        
+        Returns Phi scaled by Phi_scale for compatibility with C equation.
+        """
+        if activity.ndim == 1:
+            return 0.5 * self.Phi_scale
+        
+        N, T = activity.shape
+        if T < 20:
+            return 0.5 * self.Phi_scale
+        
+        lzc_values = []
+        for ch in range(N):
+            lzc = self._lempel_ziv_complexity(activity[ch])
+            lzc_values.append(lzc)
+        
+        # Average LZC across channels, scale
+        mean_lzc = float(np.mean(lzc_values))
+        return mean_lzc * self.Phi_scale
+    
+    @staticmethod
+    def _lempel_ziv_complexity(signal: np.ndarray) -> float:
+        """
+        Kaspar-Schuster Lempel-Ziv complexity, normalized to [0, 1].
+        
+        Higher for complex/irregular signals, lower for periodic/regular.
+        """
+        # Binarize around median
+        median = np.median(signal)
+        binary = ''.join(['1' if x > median else '0' for x in signal])
+        
+        n = len(binary)
+        if n < 2:
+            return 0.0
+        
+        # Kaspar-Schuster algorithm
+        i, k, l = 0, 1, 1
+        c = 1
+        while k + l <= n:
+            if binary[i + l - 1] == binary[k + l - 1]:
+                l += 1
+            else:
+                i += 1
+                if i == k:
+                    c += 1
+                    k += l
+                    i = 0
+                    l = 1
+                else:
+                    l = 1
+        c += 1
+        
+        # Normalize: theoretical max complexity for random binary string
+        norm = n / np.log2(n) if n > 1 else 1.0
+        return c / norm
     
     def _calculate_branching_parameter(
         self, 

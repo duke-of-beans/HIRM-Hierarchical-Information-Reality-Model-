@@ -1,0 +1,108 @@
+{
+  "completed": {
+    "S000_R1": {
+      "finished_at": "2026-05-17 23:04:30",
+      "elapsed_s": 6930.2,
+      "n_epochs": 5299,
+      "c_mean": 39.85
+    },
+    "S000_R2": {
+      "finished_at": "2026-05-18 00:58:25",
+      "elapsed_s": 6834.6,
+      "n_epochs": 5659,
+      "c_mean": 41.8
+    },
+    "S001_R1": {
+      "finished_at": "2026-05-18 02:41:04",
+      "elapsed_s": 6158.6,
+      "n_epochs": 5603,
+      "c_mean": 31.85
+    },
+    "S001_R2": {
+      "finished_at": "2026-05-18 04:22:07",
+      "elapsed_s": 6063.5,
+      "n_epochs": 5699,
+      "c_mean": 29.29
+    },
+    "S002_R1": {
+      "finished_at": "2026-05-18 06:12:07",
+      "elapsed_s": 6600.1,
+      "n_epochs": 5607,
+      "c_mean": 37.9
+    },
+    "S002_R2": {
+      "finished_at": "2026-05-18 07:47:16",
+      "elapsed_s": 5709.1,
+      "n_epochs": 5511,
+      "c_mean": 25.56
+    },
+    "S003_R1": {
+      "finished_at": "2026-05-18 09:42:01",
+      "elapsed_s": 6884.7,
+      "n_epochs": 5639,
+      "c_mean": 44.57
+    },
+    "S003_R2": {
+      "finished_at": "2026-05-18 11:35:36",
+      "elapsed_s": 6814.8,
+      "n_epochs": 5463,
+      "c_mean": 46.28
+    },
+    "S004_R1": {
+      "finished_at": "2026-05-18 13:24:40",
+      "elapsed_s": 6544.4,
+      "n_epochs": 5139,
+      "c_mean": 45.41
+    },
+    "S004_R2": {
+      "finished_at": "2026-05-19 01:26:20",
+      "elapsed_s": 7113.6,
+      "n_epochs": 5583,
+      "c_mean": 49.8
+    },
+    "S005_R1": {
+      "finished_at": "2026-05-19 03:14:15",
+      "elapsed_s": 6475.6,
+      "n_epochs": 5443,
+      "c_mean": 33.29
+    },
+    "S005_R2": {
+      "finished_at": "2026-05-19 05:01:05",
+      "elapsed_s": 6409.9,
+      "n_epochs": 5611,
+      "c_mean": 32.48
+    },
+    "S006_R1": {
+      "finished_at": "2026-05-19 06:57:52",
+      "elapsed_s": 7006.6,
+      "n_epochs": 5539,
+      "c_mean": 45.16
+    },
+    "S006_R2": {
+      "finished_at": "2026-05-19 08:48:58",
+      "elapsed_s": 6666.3,
+      "n_epochs": 5659,
+      "c_mean": 37.38
+    },
+    "S007_R1": {
+      "finished_at": "2026-05-19 10:48:02",
+      "elapsed_s": 7143.8,
+      "n_epochs": 5619,
+      "c_mean": 47.22
+    },
+    "S007_R2": {
+      "finished_at": "2026-05-19 12:56:26",
+      "elapsed_s": 7704.0,
+      "n_epochs": 5539,
+      "c_mean": 55.16
+    },
+    "S008_R1": {
+      "finished_at": "2026-05-19 14:40:19",
+      "elapsed_s": 6232.5,
+      "n_epochs": 5591,
+      "c_mean": 34.03
+    }
+  },
+  "failed": {},
+  "started_at": "2026-05-17 21:09:00"
+}
